@@ -60,7 +60,7 @@
     .topbar{background:var(--topbar-bg);border-bottom:1px solid var(--border);display:flex;align-items:center;
       justify-content:space-between;padding:0 1.5rem;height:62px;position:sticky;top:0;z-index:200;
       box-shadow:0 1px 6px var(--shadow);transition:background 0.3s,border-color 0.3s}
-    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
     .logo-icon{height:44px;width:44px;border-radius:10px;background:linear-gradient(135deg,#1a2a5e,#4a7cf7);
       display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .logo-text{font-size:17px;font-weight:700;color:var(--text);line-height:1.2;transition:color 0.3s}
@@ -73,7 +73,7 @@
     .search-input:focus{border-color:#4a7cf7;background:var(--card-bg)}
     .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
       color:#aaa;font-size:15px;pointer-events:none}
-    .topbar-actions{display:flex;align-items:center;gap:8px}
+    .topbar-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .icon-btn{background:var(--icon-btn-bg);border:1px solid var(--border);border-radius:10px;
       padding:7px 14px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
       cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;color:var(--icon-btn-text)}
@@ -230,13 +230,41 @@
       font-family:'Cairo',sans-serif;font-weight:700;font-size:14px;
       transition:transform 0.3s;z-index:999;pointer-events:none;white-space:nowrap}
     .toast.show{transform:translateX(-50%) translateY(0)}
+
+    /* INFO PAGES */
+    .info-page{display:none;padding:2rem 1.5rem 3rem;max-width:860px;margin:0 auto;animation:fadeIn 0.3s ease}
+    .info-page.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .info-hero{background:linear-gradient(135deg,#1a2a5e,#4a7cf7);border-radius:16px;padding:2.5rem 2rem;color:#fff;margin-bottom:2rem;position:relative;overflow:hidden}
+    .info-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:0.4}
+    .info-hero h1{font-size:26px;font-weight:700;margin-bottom:10px;position:relative}
+    .info-hero p{font-size:14px;line-height:1.9;opacity:0.9;position:relative}
+    .info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:2rem}
+    @media(max-width:600px){.info-cards{grid-template-columns:1fr}}
+    .info-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.4rem;text-align:center;box-shadow:0 1px 5px var(--shadow)}
+    .info-card-icon{font-size:32px;margin-bottom:10px}
+    .info-card h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .info-card p{font-size:13px;color:var(--subtext);line-height:1.7}
+    .info-section{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.2rem}
+    .info-section h2{font-size:16px;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+    .info-section p{font-size:13px;color:var(--subtext);line-height:1.9}
+    .info-section ul{padding-right:1.2rem;margin-top:8px}
+    .info-section ul li{font-size:13px;color:var(--subtext);line-height:2;list-style:disc}
+
+    /* NAV TABS in topbar */
+    .nav-tabs{display:flex;align-items:center;gap:4px}
+    .nav-tab{background:none;border:1px solid transparent;border-radius:8px;padding:6px 12px;
+      font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;cursor:pointer;
+      color:var(--subtext);transition:all 0.2s}
+    .nav-tab:hover{background:var(--icon-btn-bg);color:var(--text)}
+    .nav-tab.active{background:var(--icon-btn-bg);color:#4a7cf7;border-color:var(--border)}
   </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <div class="logo">
+  <div class="logo" onclick="showPage('shop')">
     <div class="logo-icon">
       <svg width="26" height="26" viewBox="0 0 1200 1227" fill="none">
         <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.828Z" fill="white"/>
@@ -251,6 +279,11 @@
     </div>
   </div>
   <div class="topbar-actions">
+    <div class="nav-tabs">
+      <button class="nav-tab active" id="tab-shop" onclick="showPage('shop')">🏪 المتجر</button>
+      <button class="nav-tab" id="tab-about" onclick="showPage('about')">من نحن</button>
+      <button class="nav-tab" id="tab-desc" onclick="showPage('desc')">وصف المتجر</button>
+    </div>
     <button class="dark-toggle" onclick="toggleDark()" id="darkBtn">🌙 داكن</button>
     <button class="icon-btn" onclick="openPanel('fav')">
       ♥ المفضلة <span class="badge" id="favBadge" style="display:none">0</span>
@@ -262,25 +295,102 @@
   </div>
 </div>
 
-<!-- FILTERS -->
-<div class="filter-bar">
-  <div class="fbtn active" onclick="setFilter(this,'all')">الكل</div>
-  <div class="fbtn" onclick="setFilter(this,'2006')">2006</div>
-  <div class="fbtn" onclick="setFilter(this,'2007')">2007</div>
-  <div class="fbtn" onclick="setFilter(this,'2008')">2008</div>
-  <div class="fbtn" onclick="setFilter(this,'2009')">2009</div>
-  <div class="fbtn" onclick="setFilter(this,'2010')">2010</div>
-  <div class="fbtn" onclick="setFilter(this,'2011')">2011</div>
-  <div class="fbtn" onclick="setFilter(this,'2012')">2012</div>
-  <div class="fbtn" onclick="setFilter(this,'2013')">2013</div>
-  <div class="fbtn" onclick="setFilter(this,'2014')">2014</div>
-  <div class="fbtn" onclick="setFilter(this,'2015')">2015</div>
-  <div class="fbtn" onclick="setFilter(this,'2016')">2016</div>
-  <div class="fbtn" onclick="setFilter(this,'2017')">2017</div>
+<!-- ============ SHOP PAGE ============ -->
+<div id="page-shop">
+  <div class="filter-bar">
+    <div class="fbtn active" onclick="setFilter(this,'all')">الكل</div>
+    <div class="fbtn" onclick="setFilter(this,'2006')">2006</div>
+    <div class="fbtn" onclick="setFilter(this,'2007')">2007</div>
+    <div class="fbtn" onclick="setFilter(this,'2008')">2008</div>
+    <div class="fbtn" onclick="setFilter(this,'2009')">2009</div>
+    <div class="fbtn" onclick="setFilter(this,'2010')">2010</div>
+    <div class="fbtn" onclick="setFilter(this,'2011')">2011</div>
+    <div class="fbtn" onclick="setFilter(this,'2012')">2012</div>
+    <div class="fbtn" onclick="setFilter(this,'2013')">2013</div>
+    <div class="fbtn" onclick="setFilter(this,'2014')">2014</div>
+    <div class="fbtn" onclick="setFilter(this,'2015')">2015</div>
+    <div class="fbtn" onclick="setFilter(this,'2016')">2016</div>
+    <div class="fbtn" onclick="setFilter(this,'2017')">2017</div>
+  </div>
+  <div class="page-title-bar">بأرخص الأسعار لفترة محدودة</div>
+  <div class="grid" id="grid"></div>
 </div>
 
-<div class="page-title-bar">بأرخص الأسعار لفترة محدودة</div>
-<div class="grid" id="grid"></div>
+<!-- ============ ABOUT PAGE ============ -->
+<div id="page-about" class="info-page">
+  <div class="info-hero">
+    <h1>🏪 من نحن — متجر BEST</h1>
+    <p>متجر BEST هو متجر مختص ببيع حسابات إلكترونية مضمونة وآمنة وتسليم سريع، ونحرص على تقديم تجربة شراء مميزة لعملائنا.</p>
+  </div>
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-icon">⚡</div>
+      <h3>تسليم سريع</h3>
+      <p>نضمن لك استلام منتجك بأسرع وقت ممكن فور إتمام عملية الشراء.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">🛡️</div>
+      <h3>موثوقية عالية</h3>
+      <p>منتجاتنا مضمونة 100% ونحرص على تقديم أعلى معايير الجودة والأمان.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">🎧</div>
+      <h3>دعم فني</h3>
+      <p>فريق دعم فني متاح لحل أي مشكلة قد تواجهها في المنتج عند الحاجة.</p>
+    </div>
+  </div>
+  <div class="info-section">
+    <h2>لماذا تختار متجر BEST؟</h2>
+    <ul>
+      <li><strong>تسليم سريع</strong> — نضمن لك استلام سريع لجميع المنتجات</li>
+      <li><strong>موثوقية عالية</strong> — منتجات مضمونة وذات جودة عالية</li>
+      <li><strong>دعم فني</strong> — لحل مشاكل المنتج إن وجدت</li>
+      <li><strong>أسعار تنافسية</strong> — أفضل الأسعار في السوق</li>
+      <li><strong>تجربة شراء مميزة</strong> — واجهة سهلة وآمنة</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ DESCRIPTION PAGE ============ -->
+<div id="page-desc" class="info-page">
+  <div class="info-hero">
+    <h1>📋 وصف المتجر</h1>
+    <p>كل ما تحتاج معرفته عن خدماتنا ومنتجاتنا</p>
+  </div>
+  <div class="info-section">
+    <h2>عن متجر BEST</h2>
+    <p>
+      متجر متخصص في بيع حسابات تويتر الجاهزة بمواصفات متنوعة تناسب جميع الاحتياجات، سواء للتسويق أو نشر المحتوى. نوفر حسابات موثوقة بعمر مختلف مع ضمان الجودة والخصوصية. نحرص على تقديم خدمات سريعة وآمنة مع دعم فني مستمر لضمان تجربة سلسة للعملاء. هدفنا مساعدتك في الحصول على ما تحتاجه بأفضل جودة وأنسب سعر.
+    </p>
+  </div>
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-icon">📅</div>
+      <h3>حسابات بأعمار متنوعة</h3>
+      <p>من 2006 حتى 2017 — اختر السنة التي تناسب احتياجك.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">✅</div>
+      <h3>ضمان الجودة</h3>
+      <p>كل حساب يمر بفحص دقيق قبل البيع لضمان المواصفات المطلوبة.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">🔒</div>
+      <h3>الخصوصية والأمان</h3>
+      <p>نحافظ على خصوصية عملائنا وأمان بياناتهم بالكامل.</p>
+    </div>
+  </div>
+  <div class="info-section">
+    <h2>ماذا نقدم؟</h2>
+    <ul>
+      <li>حسابات تويتر قديمة بعمر يتراوح من 2006 إلى 2017</li>
+      <li>مناسبة للتسويق الإلكتروني ونشر المحتوى</li>
+      <li>تسليم فوري بعد إتمام الدفع</li>
+      <li>ضمان الجودة والأصالة لكل حساب</li>
+      <li>دعم فني مستمر بعد الشراء</li>
+    </ul>
+  </div>
+</div>
 
 <!-- PRODUCT MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
@@ -305,11 +415,12 @@
         <span class="qty-label">الكمية:</span>
         <div class="qty-ctrl">
           <button class="qty-btn" onclick="changeQty(-1)">−</button>
-          <input class="qty-num" id="qtyInput" type="number" value="1" min="1" max="99" oninput="updateQtyTotal()">
+          <input class="qty-num" id="qtyInput" type="number" value="1" min="1" max="5" oninput="updateQtyTotal()">
           <button class="qty-btn" onclick="changeQty(1)">+</button>
         </div>
         <span class="qty-total">الإجمالي: <span id="qtyTotal">0</span> ﷼</span>
       </div>
+      <div style="font-size:11px;color:var(--subtext);margin-bottom:16px;margin-top:-12px">الحد الأقصى للطلب: 5 قطع</div>
       <button class="modal-add-btn" onclick="addFromModal()">🛒 إضافة للسلة</button>
       <div class="reviews-section">
         <div class="reviews-title">تقييمات المنتج</div>
@@ -343,23 +454,8 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ===== PRODUCT IMAGES using Picsum (stable, reliable) =====
-const productImages = {
-  1: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&h=300&fit=crop',
-  2: 'https://images.unsplash.com/photo-1622916819408-b5d0f1b7b1f4?w=400&h=300&fit=crop',
-  3: 'https://images.unsplash.com/photo-1616531770192-6eaea74c2456?w=400&h=300&fit=crop',
-  4: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop',
-  5: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=300&fit=crop',
-  6: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=400&h=300&fit=crop',
-  7: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=300&fit=crop',
-  8: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop',
-  9: 'https://images.unsplash.com/photo-1611162617674-3745b2f294aa?w=400&h=300&fit=crop',
-  10:'https://images.unsplash.com/photo-1619410283995-43d9134e7656?w=400&h=300&fit=crop',
-  11:'https://images.unsplash.com/photo-1611262588019-db6cc2032da3?w=400&h=300&fit=crop',
-  12:'https://images.unsplash.com/photo-1612153409851-2d77d4bc13e2?w=400&h=300&fit=crop',
-};
+const MAX_QTY = 5;
 
-// Fallback gradient images per year (using picsum with seed)
 function getImg(id) {
   const seeds = {1:10,2:20,3:30,4:40,5:50,6:60,7:70,8:80,9:90,10:100,11:110,12:120};
   return `https://picsum.photos/seed/${seeds[id]||id*10}/400/280`;
@@ -392,6 +488,21 @@ const accounts = [
 
 let activeFilter='all', searchQ='', cart=[], favs=new Set(), currentAcc=null;
 let isDark = false;
+
+// Page navigation
+function showPage(page) {
+  ['shop','about','desc'].forEach(p => {
+    const el = document.getElementById('page-'+p);
+    const tab = document.getElementById('tab-'+p);
+    if(p === page) {
+      if(p === 'shop') el.style.display = 'block'; else el.classList.add('active');
+      if(tab) tab.classList.add('active');
+    } else {
+      if(p === 'shop') el.style.display = 'none'; else el.classList.remove('active');
+      if(tab) tab.classList.remove('active');
+    }
+  });
+}
 
 function toggleDark(){
   isDark = !isDark;
@@ -448,6 +559,7 @@ function openModal(id){
   const revs = reviewsDB[id] || reviewsDB[1];
   document.getElementById('mRatingCount').textContent = revs.length;
   document.getElementById('qtyInput').value = 1;
+  document.getElementById('qtyInput').max = MAX_QTY;
   updateQtyTotal();
   document.getElementById('reviewsList').innerHTML = revs.map(r=>`
     <div class="review-item">
@@ -470,19 +582,20 @@ function closeModalOutside(e){ if(e.target===document.getElementById('modalOverl
 
 function changeQty(d){
   const inp = document.getElementById('qtyInput');
-  inp.value = Math.max(1, Math.min(99, parseInt(inp.value||1)+d));
+  inp.value = Math.max(1, Math.min(MAX_QTY, parseInt(inp.value||1)+d));
   updateQtyTotal();
 }
 
 function updateQtyTotal(){
   if(!currentAcc) return;
-  const q = parseInt(document.getElementById('qtyInput').value)||1;
+  const q = Math.min(MAX_QTY, parseInt(document.getElementById('qtyInput').value)||1);
+  document.getElementById('qtyInput').value = q;
   document.getElementById('qtyTotal').textContent = (currentAcc.priceNew*q).toFixed(2);
 }
 
 function addFromModal(){
   if(!currentAcc) return;
-  const q = parseInt(document.getElementById('qtyInput').value)||1;
+  const q = Math.min(MAX_QTY, parseInt(document.getElementById('qtyInput').value)||1);
   addCart(currentAcc.id, q);
   closeModal();
 }
@@ -496,8 +609,15 @@ function toggleFav(id,btn){
 function addCart(id, qty=1){
   const a = accounts.find(x=>x.id===id);
   const existing = cart.find(x=>x.id===id);
-  if(existing){ existing.qty += qty; showToast('✓ تم تحديث الكمية'); }
-  else{ cart.push({...a, qty}); showToast('✓ أُضيف للسلة'); }
+  if(existing){
+    const newQty = Math.min(MAX_QTY, existing.qty + qty);
+    if(newQty === existing.qty){ showToast('⚠️ وصلت للحد الأقصى (5)'); return; }
+    existing.qty = newQty;
+    showToast('✓ تم تحديث الكمية');
+  } else {
+    cart.push({...a, qty: Math.min(MAX_QTY, qty)});
+    showToast('✓ أُضيف للسلة');
+  }
   updateBadges();
 }
 
@@ -534,7 +654,7 @@ function renderCartBody(){
       <div class="panel-item-img"><img src="${getImg(a.id)}" alt="${a.title}"></div>
       <div class="panel-item-info">
         <div class="panel-item-name">${a.title}</div>
-        <div class="panel-item-qty">الكمية: ${a.qty}</div>
+        <div class="panel-item-qty">الكمية: ${a.qty} / ${MAX_QTY}</div>
         <div class="panel-item-price">${(a.priceNew*a.qty).toFixed(2)} ﷼</div>
       </div>
       <button class="remove-btn" onclick="removeCart(${a.id})">✕</button>
@@ -564,7 +684,7 @@ function renderFavBody(){
 function addAllFavs(){
   accounts.filter(a=>favs.has(a.id)).forEach(a=>{
     const ex=cart.find(x=>x.id===a.id);
-    if(ex) ex.qty++; else cart.push({...a,qty:1});
+    if(ex) ex.qty=Math.min(MAX_QTY, ex.qty+1); else cart.push({...a,qty:1});
   });
   updateBadges(); showToast('✓ أُضيف الكل للسلة'); closePanel();
 }
