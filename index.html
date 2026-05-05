@@ -1,42 +1,581 @@
----
-name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.
-license: Complete terms in LICENSE.txt
----
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر BEST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #fff;
+      --topbar-bg: #fff;
+      --text: #222;
+      --subtext: #999;
+      --border: #e5e5e5;
+      --input-bg: #f5f5f5;
+      --filter-bg: #fff;
+      --fbtn-bg: #f5f5f5;
+      --fbtn-text: #555;
+      --panel-bg: #fff;
+      --icon-btn-bg: #f5f5f5;
+      --icon-btn-text: #333;
+      --shadow: rgba(0,0,0,0.09);
+      --shadow-hover: rgba(0,0,0,0.14);
+      --price-old: #bbb;
+      --review-border: #f8f8f8;
+      --panel-item-border: #f5f5f5;
+      --qty-border: #e5e5e5;
+      --qty-bg: #f5f5f5;
+      --toast-bg: #1a2a5e;
+    }
+    [data-theme="dark"] {
+      --bg: #0f1117;
+      --card-bg: #1a1d2e;
+      --topbar-bg: #12151f;
+      --text: #eee;
+      --subtext: #778;
+      --border: #2a2d3e;
+      --input-bg: #1a1d2e;
+      --filter-bg: #12151f;
+      --fbtn-bg: #1a1d2e;
+      --fbtn-text: #aab;
+      --panel-bg: #12151f;
+      --icon-btn-bg: #1a1d2e;
+      --icon-btn-text: #ccc;
+      --shadow: rgba(0,0,0,0.4);
+      --shadow-hover: rgba(0,0,0,0.6);
+      --price-old: #556;
+      --review-border: #1f2235;
+      --panel-item-border: #1f2235;
+      --qty-border: #2a2d3e;
+      --qty-bg: #1a1d2e;
+      --toast-bg: #4a7cf7;
+    }
 
-This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);font-family:'Cairo',sans-serif;direction:rtl;color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s}
 
-The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
+    /* TOPBAR */
+    .topbar{background:var(--topbar-bg);border-bottom:1px solid var(--border);display:flex;align-items:center;
+      justify-content:space-between;padding:0 1.5rem;height:62px;position:sticky;top:0;z-index:200;
+      box-shadow:0 1px 6px var(--shadow);transition:background 0.3s,border-color 0.3s}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-icon{height:44px;width:44px;border-radius:10px;background:linear-gradient(135deg,#1a2a5e,#4a7cf7);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .logo-text{font-size:17px;font-weight:700;color:var(--text);line-height:1.2;transition:color 0.3s}
+    .logo-text span{color:#4a7cf7}
+    .topbar-mid{flex:1;max-width:360px;margin:0 1.5rem}
+    .search-wrap{position:relative}
+    .search-input{width:100%;background:var(--input-bg);border:1.5px solid var(--border);border-radius:24px;
+      padding:8px 16px 8px 40px;font-family:'Cairo',sans-serif;font-size:13px;outline:none;
+      transition:border-color 0.2s,background 0.3s;color:var(--text)}
+    .search-input:focus{border-color:#4a7cf7;background:var(--card-bg)}
+    .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+      color:#aaa;font-size:15px;pointer-events:none}
+    .topbar-actions{display:flex;align-items:center;gap:8px}
+    .icon-btn{background:var(--icon-btn-bg);border:1px solid var(--border);border-radius:10px;
+      padding:7px 14px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
+      cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;color:var(--icon-btn-text)}
+    .icon-btn:hover{background:var(--border)}
+    .icon-btn.blue{background:#1a2a5e;color:#fff;border-color:#1a2a5e}
+    .icon-btn.blue:hover{background:#2a3a7e}
+    .badge{background:#e74c3c;color:#fff;border-radius:50%;width:18px;height:18px;
+      display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;min-width:18px}
 
-## Design Thinking
+    /* DARK MODE TOGGLE */
+    .dark-toggle{background:var(--icon-btn-bg);border:1px solid var(--border);border-radius:20px;
+      padding:6px 12px;cursor:pointer;font-size:13px;font-weight:600;
+      display:flex;align-items:center;gap:6px;color:var(--icon-btn-text);
+      transition:all 0.2s;font-family:'Cairo',sans-serif;white-space:nowrap}
+    .dark-toggle:hover{border-color:#4a7cf7}
 
-Before coding, understand the context and commit to a BOLD aesthetic direction:
-- **Purpose**: What problem does this interface solve? Who uses it?
-- **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc. There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
-- **Constraints**: Technical requirements (framework, performance, accessibility).
-- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+    /* FILTERS */
+    .filter-bar{background:var(--filter-bg);border-bottom:1px solid var(--border);padding:0.6rem 1.5rem;
+      display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;transition:background 0.3s}
+    .filter-bar::-webkit-scrollbar{display:none}
+    .fbtn{background:var(--fbtn-bg);border:1px solid var(--border);border-radius:20px;padding:5px 16px;
+      font-size:12px;cursor:pointer;color:var(--fbtn-text);font-family:'Cairo',sans-serif;white-space:nowrap;transition:all 0.15s}
+    .fbtn.active,.fbtn:hover{background:#1a2a5e;color:#fff;border-color:#1a2a5e;font-weight:600}
 
-**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work - the key is intentionality, not intensity.
+    .page-title-bar{padding:1rem 1.5rem 0.6rem;font-size:15px;font-weight:700;color:var(--text)}
 
-Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
-- Production-grade and functional
-- Visually striking and memorable
-- Cohesive with a clear aesthetic point-of-view
-- Meticulously refined in every detail
+    /* GRID */
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 1.5rem 3rem}
+    @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:440px){.grid{grid-template-columns:1fr}}
 
-## Frontend Aesthetics Guidelines
+    /* CARD */
+    .card{background:var(--card-bg);border-radius:12px;overflow:hidden;
+      box-shadow:0 1px 5px var(--shadow);transition:all 0.22s;cursor:pointer;border:1px solid var(--border)}
+    .card:hover{box-shadow:0 6px 22px var(--shadow-hover);transform:translateY(-3px)}
+    .card-img{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .card-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .btn-fav{position:absolute;top:10px;right:10px;z-index:3;
+      background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.1);
+      border-radius:50%;width:30px;height:30px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;font-size:15px;
+      transition:all 0.2s;color:#ccc}
+    .btn-fav:hover,.btn-fav.active{background:#fff;color:#e74c3c;border-color:#e74c3c}
+    .card-badge{position:absolute;top:10px;left:10px;z-index:3;
+      background:#e74c3c;color:#fff;border-radius:6px;padding:3px 8px;
+      font-size:11px;font-weight:700;font-family:'Cairo',sans-serif}
+    .card-body{padding:11px 13px 13px}
+    .card-title{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--text)}
+    .card-sub{font-size:11px;color:var(--subtext);margin-bottom:8px}
+    .rating{display:flex;align-items:center;gap:5px;margin-bottom:9px}
+    .stars{color:#f39c12;font-size:12px}
+    .rating-count{font-size:11px;color:var(--subtext)}
+    .price-row{display:flex;align-items:baseline;gap:6px}
+    .price-new{font-size:17px;font-weight:700;color:#c0392b}
+    .price-cur{font-size:11px;color:#c0392b}
+    .price-old{font-size:12px;color:var(--price-old);text-decoration:line-through}
+    .add-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;
+      margin-top:11px;background:transparent;border:1.5px solid #1a2a5e;border-radius:8px;
+      padding:8px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;
+      color:#1a2a5e;cursor:pointer;transition:all 0.2s}
+    .add-btn:hover{background:#1a2a5e;color:#fff}
+    [data-theme="dark"] .add-btn{border-color:#4a7cf7;color:#4a7cf7}
+    [data-theme="dark"] .add-btn:hover{background:#4a7cf7;color:#fff}
 
-Focus on:
-- **Typography**: Choose fonts that are beautiful, unique, and interesting. Avoid generic fonts like Arial and Inter; opt instead for distinctive choices that elevate the frontend's aesthetics; unexpected, characterful font choices. Pair a distinctive display font with a refined body font.
-- **Color & Theme**: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
-- **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions. Use scroll-triggering and hover states that surprise.
-- **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
-- **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
+    /* MODAL */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;
+      align-items:center;justify-content:center;padding:1rem}
+    .modal-overlay.open{display:flex}
+    .modal{background:var(--card-bg);border-radius:16px;width:100%;max-width:680px;max-height:90vh;
+      overflow-y:auto;position:relative;animation:modalIn 0.25s ease;border:1px solid var(--border)}
+    @keyframes modalIn{from{transform:scale(0.95);opacity:0}to{transform:scale(1);opacity:1}}
+    .modal-close{position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.2);border:none;
+      border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:18px;
+      display:flex;align-items:center;justify-content:center;color:#fff;z-index:10}
+    .modal-close:hover{background:rgba(0,0,0,0.4)}
+    .modal-img{height:260px;position:relative;overflow:hidden;border-radius:16px 16px 0 0}
+    .modal-img img{width:100%;height:100%;object-fit:cover}
+    .modal-body{padding:1.4rem 1.5rem}
+    .modal-title{font-size:20px;font-weight:700;margin-bottom:6px;color:var(--text)}
+    .modal-sub{font-size:13px;color:var(--subtext);margin-bottom:14px}
+    .modal-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:16px}
+    .modal-price{font-size:24px;font-weight:700;color:#c0392b}
+    .modal-price-old{font-size:14px;color:var(--price-old);text-decoration:line-through}
+    .modal-rating{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+    .modal-stars{color:#f39c12;font-size:16px}
+    .modal-rating-text{font-size:13px;color:var(--subtext)}
 
-NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
+    .qty-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .qty-label{font-size:14px;font-weight:600;color:var(--text)}
+    .qty-ctrl{display:flex;align-items:center;gap:0;border:1.5px solid var(--qty-border);border-radius:10px;overflow:hidden}
+    .qty-btn{background:var(--qty-bg);border:none;width:38px;height:38px;font-size:20px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;color:var(--text);transition:background 0.15s;font-family:monospace}
+    .qty-btn:hover{background:var(--border)}
+    .qty-num{width:48px;text-align:center;font-size:16px;font-weight:700;color:var(--text);
+      border:none;border-right:1px solid var(--qty-border);border-left:1px solid var(--qty-border);
+      height:38px;background:var(--card-bg);font-family:'Cairo',sans-serif}
+    .qty-total{font-size:14px;color:var(--subtext)}
+    .qty-total span{color:#c0392b;font-weight:700}
 
-Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
+    .modal-add-btn{display:flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;background:#1a2a5e;color:#fff;border:none;border-radius:10px;
+      padding:13px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
+      cursor:pointer;transition:background 0.2s;margin-bottom:20px}
+    .modal-add-btn:hover{background:#2a3a7e}
 
-**IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
+    .reviews-section{border-top:1px solid var(--border);padding-top:16px}
+    .reviews-title{font-size:15px;font-weight:700;margin-bottom:12px;color:var(--text)}
+    .review-item{padding:12px 0;border-bottom:1px solid var(--review-border)}
+    .review-item:last-child{border-bottom:none}
+    .review-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+    .review-avatar{width:36px;height:36px;border-radius:50%;background:#1a2a5e;
+      display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+    .review-name{font-size:13px;font-weight:600;color:var(--text)}
+    .review-date{font-size:11px;color:var(--subtext);margin-right:auto}
+    .review-stars{color:#f39c12;font-size:12px}
+    .review-text{font-size:13px;color:var(--subtext);line-height:1.7}
 
-Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+    /* SIDE PANELS */
+    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:300}
+    .overlay.open{display:block}
+    .side-panel{position:fixed;top:0;left:-420px;width:380px;height:100vh;background:var(--panel-bg);
+      z-index:400;overflow-y:auto;transition:left 0.28s cubic-bezier(.4,0,.2,1);
+      box-shadow:4px 0 24px var(--shadow);border-right:1px solid var(--border)}
+    .side-panel.open{left:0}
+    .panel-header{display:flex;align-items:center;justify-content:space-between;
+      padding:1.1rem 1.2rem 1rem;border-bottom:1px solid var(--border);
+      position:sticky;top:0;background:var(--panel-bg);z-index:1}
+    .panel-header h2{font-size:16px;font-weight:700;color:var(--text)}
+    .close-btn{background:var(--icon-btn-bg);border:none;border-radius:50%;width:32px;height:32px;
+      cursor:pointer;font-size:17px;color:var(--icon-btn-text);display:flex;align-items:center;justify-content:center}
+    .panel-body{padding:0.8rem 1.2rem 1.5rem}
+    .panel-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--panel-item-border)}
+    .panel-item-img{width:54px;height:54px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--border)}
+    .panel-item-img img{width:100%;height:100%;object-fit:cover}
+    .panel-item-info{flex:1}
+    .panel-item-name{font-size:13px;font-weight:600;color:var(--text)}
+    .panel-item-price{font-size:13px;color:#c0392b;font-weight:700;margin-top:2px}
+    .panel-item-qty{font-size:11px;color:var(--subtext)}
+    .remove-btn{background:none;border:none;color:var(--subtext);cursor:pointer;font-size:18px;padding:4px}
+    .remove-btn:hover{color:#e74c3c}
+    .panel-total{display:flex;justify-content:space-between;align-items:center;
+      margin-top:1rem;padding-top:1rem;border-top:2px solid var(--border)}
+    .panel-total-label{font-size:14px;font-weight:600;color:var(--text)}
+    .panel-total-val{font-size:20px;font-weight:700;color:#c0392b}
+    .checkout-btn{display:block;width:100%;margin-top:1rem;background:#1a2a5e;color:#fff;
+      border:none;border-radius:10px;padding:12px;font-family:'Cairo',sans-serif;
+      font-size:14px;font-weight:700;cursor:pointer;text-align:center;transition:background 0.2s}
+    .checkout-btn:hover{background:#2a3a7e}
+    .panel-empty{text-align:center;color:var(--subtext);padding:3rem 0;font-size:14px;line-height:2.2}
+
+    .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);
+      background:var(--toast-bg);color:#fff;border-radius:10px;padding:10px 24px;
+      font-family:'Cairo',sans-serif;font-weight:700;font-size:14px;
+      transition:transform 0.3s;z-index:999;pointer-events:none;white-space:nowrap}
+    .toast.show{transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg width="26" height="26" viewBox="0 0 1200 1227" fill="none">
+        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.828Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="logo-text">متجر <span>BEST</span></div>
+  </div>
+  <div class="topbar-mid">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="searchInput" placeholder="ابحث بالسنة مثلاً: 2009" oninput="doSearch()">
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="dark-toggle" onclick="toggleDark()" id="darkBtn">🌙 داكن</button>
+    <button class="icon-btn" onclick="openPanel('fav')">
+      ♥ المفضلة <span class="badge" id="favBadge" style="display:none">0</span>
+    </button>
+    <button class="icon-btn blue" onclick="openPanel('cart')">
+      🛒 <span id="cartTotalTop">0.00 ﷼</span>
+      <span class="badge" id="cartBadge" style="display:none">0</span>
+    </button>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filter-bar">
+  <div class="fbtn active" onclick="setFilter(this,'all')">الكل</div>
+  <div class="fbtn" onclick="setFilter(this,'2006')">2006</div>
+  <div class="fbtn" onclick="setFilter(this,'2007')">2007</div>
+  <div class="fbtn" onclick="setFilter(this,'2008')">2008</div>
+  <div class="fbtn" onclick="setFilter(this,'2009')">2009</div>
+  <div class="fbtn" onclick="setFilter(this,'2010')">2010</div>
+  <div class="fbtn" onclick="setFilter(this,'2011')">2011</div>
+  <div class="fbtn" onclick="setFilter(this,'2012')">2012</div>
+  <div class="fbtn" onclick="setFilter(this,'2013')">2013</div>
+  <div class="fbtn" onclick="setFilter(this,'2014')">2014</div>
+  <div class="fbtn" onclick="setFilter(this,'2015')">2015</div>
+  <div class="fbtn" onclick="setFilter(this,'2016')">2016</div>
+  <div class="fbtn" onclick="setFilter(this,'2017')">2017</div>
+</div>
+
+<div class="page-title-bar">بأرخص الأسعار لفترة محدودة</div>
+<div class="grid" id="grid"></div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img">
+      <img id="mImg" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-sub" id="mSub"></div>
+      <div class="modal-rating">
+        <span class="modal-stars">★★★★★</span>
+        <span class="modal-rating-text">5.0 — بناءً على <span id="mRatingCount">0</span> تقييم</span>
+      </div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="mPrice"></span>
+        <span style="font-size:14px;color:#c0392b">﷼</span>
+        <span class="modal-price-old" id="mPriceOld"></span>
+      </div>
+      <div class="qty-row">
+        <span class="qty-label">الكمية:</span>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <input class="qty-num" id="qtyInput" type="number" value="1" min="1" max="99" oninput="updateQtyTotal()">
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+        <span class="qty-total">الإجمالي: <span id="qtyTotal">0</span> ﷼</span>
+      </div>
+      <button class="modal-add-btn" onclick="addFromModal()">🛒 إضافة للسلة</button>
+      <div class="reviews-section">
+        <div class="reviews-title">تقييمات المنتج</div>
+        <div id="reviewsList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+
+<!-- CART PANEL -->
+<div class="side-panel" id="cartPanel">
+  <div class="panel-header">
+    <h2>🛒 سلة الشراء</h2>
+    <button class="close-btn" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-body" id="cartBody"></div>
+</div>
+
+<!-- FAV PANEL -->
+<div class="side-panel" id="favPanel">
+  <div class="panel-header">
+    <h2>♥ المفضلة</h2>
+    <button class="close-btn" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-body" id="favBody"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== PRODUCT IMAGES using Picsum (stable, reliable) =====
+const productImages = {
+  1: 'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=400&h=300&fit=crop',
+  2: 'https://images.unsplash.com/photo-1622916819408-b5d0f1b7b1f4?w=400&h=300&fit=crop',
+  3: 'https://images.unsplash.com/photo-1616531770192-6eaea74c2456?w=400&h=300&fit=crop',
+  4: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop',
+  5: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=300&fit=crop',
+  6: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=400&h=300&fit=crop',
+  7: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400&h=300&fit=crop',
+  8: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop',
+  9: 'https://images.unsplash.com/photo-1611162617674-3745b2f294aa?w=400&h=300&fit=crop',
+  10:'https://images.unsplash.com/photo-1619410283995-43d9134e7656?w=400&h=300&fit=crop',
+  11:'https://images.unsplash.com/photo-1611262588019-db6cc2032da3?w=400&h=300&fit=crop',
+  12:'https://images.unsplash.com/photo-1612153409851-2d77d4bc13e2?w=400&h=300&fit=crop',
+};
+
+// Fallback gradient images per year (using picsum with seed)
+function getImg(id) {
+  const seeds = {1:10,2:20,3:30,4:40,5:50,6:60,7:70,8:80,9:90,10:100,11:110,12:120};
+  return `https://picsum.photos/seed/${seeds[id]||id*10}/400/280`;
+}
+
+const reviewsDB = {
+  1:[{name:'أحمد العمري',date:'منذ أسبوع',stars:5,text:'حساب ممتاز جداً، التسليم كان فوري والدعم سريع. أنصح الجميع بالتعامل مع المتجر.'},
+     {name:'سلطان الغامدي',date:'منذ أسبوعين',stars:5,text:'حساب قديم وموثوق، اشتريته بسعر مناسب وكل شيء تمام.'},
+     {name:'نورة السهلي',date:'منذ شهر',stars:4,text:'جيد ومناسب للسعر، التواصل مع المتجر ممتاز.'}],
+  2:[{name:'خالد المطيري',date:'منذ 3 أيام',stars:5,text:'حساب 2007 أصلي ونظيف، ما توقعت يكون بهالجودة.'},
+     {name:'ريم العتيبي',date:'منذ أسبوع',stars:5,text:'سريع وموثوق، شكراً متجر BEST!'}],
+  3:[{name:'فيصل الدوسري',date:'منذ يومين',stars:5,text:'أفضل متجر للحسابات القديمة بصراحة، تجربة رائعة.'},
+     {name:'هند الزهراني',date:'منذ أسبوع',stars:4,text:'الحساب تمام والسعر معقول، تسليم خلال دقائق.'}],
+};
+
+const accounts = [
+  {id:1,year:2006,title:'حساب X قديم 2006',sub:'إنشاء 2006',priceOld:80,priceNew:29.99,discount:63},
+  {id:2,year:2007,title:'حساب X قديم 2007',sub:'إنشاء 2007',priceOld:70,priceNew:24.99,discount:64},
+  {id:3,year:2008,title:'حساب X قديم 2008',sub:'إنشاء 2008',priceOld:60,priceNew:19.99,discount:67},
+  {id:4,year:2009,title:'حساب X قديم 2009',sub:'إنشاء 2009',priceOld:49,priceNew:12.99,discount:73},
+  {id:5,year:2010,title:'حساب X قديم 2010',sub:'إنشاء 2010',priceOld:35,priceNew:15.99,discount:54},
+  {id:6,year:2011,title:'حساب X قديم 2011',sub:'إنشاء 2011',priceOld:30,priceNew:17.00,discount:43},
+  {id:7,year:2012,title:'حساب X قديم 2012',sub:'إنشاء 2012',priceOld:25,priceNew:14.00,discount:44},
+  {id:8,year:2013,title:'حساب X قديم 2013',sub:'إنشاء 2013',priceOld:22,priceNew:12.00,discount:45},
+  {id:9,year:2014,title:'حساب X قديم 2014',sub:'إنشاء 2014',priceOld:20,priceNew:11.00,discount:45},
+  {id:10,year:2015,title:'حساب X قديم 2015',sub:'إنشاء 2015',priceOld:49,priceNew:12.99,discount:73},
+  {id:11,year:2016,title:'حساب X إنشاء 2016',sub:'إنشاء 2016',priceOld:44.99,priceNew:10.99,discount:76},
+  {id:12,year:2017,title:'حساب X إنشاء 2017',sub:'إنشاء 2017',priceOld:30,priceNew:11.99,discount:60},
+];
+
+let activeFilter='all', searchQ='', cart=[], favs=new Set(), currentAcc=null;
+let isDark = false;
+
+function toggleDark(){
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
+  document.getElementById('darkBtn').textContent = isDark ? '☀️ فاتح' : '🌙 داكن';
+}
+
+function setFilter(el,val){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active'); activeFilter=val; render();
+}
+
+function doSearch(){
+  searchQ = document.getElementById('searchInput').value.trim().toLowerCase();
+  render();
+}
+
+function render(){
+  let list = accounts.filter(a=>{
+    const matchF = activeFilter==='all'||String(a.year)===activeFilter;
+    const matchQ = !searchQ || String(a.year).includes(searchQ) || a.title.includes(searchQ);
+    return matchF && matchQ;
+  });
+  document.getElementById('grid').innerHTML = list.length ? list.map(a=>`
+    <div class="card" onclick="openModal(${a.id})">
+      <div class="card-img">
+        <img src="${getImg(a.id)}" alt="${a.title}" loading="lazy" onerror="this.src='https://picsum.photos/seed/${a.id*7}/400/280'">
+        <button class="btn-fav ${favs.has(a.id)?'active':''}" onclick="event.stopPropagation();toggleFav(${a.id},this)">♥</button>
+        <div class="card-badge">-${a.discount}%</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${a.title}</div>
+        <div class="card-sub">${a.sub}</div>
+        <div class="rating"><span class="stars">★★★★★</span><span class="rating-count">5</span></div>
+        <div class="price-row">
+          <span class="price-new">${a.priceNew.toFixed(2)}</span>
+          <span class="price-cur">﷼</span>
+          <span class="price-old">﷼${a.priceOld}</span>
+        </div>
+        <button class="add-btn" onclick="event.stopPropagation();addCart(${a.id},1)">🛒 إضافة للسلة</button>
+      </div>
+    </div>
+  `).join('') : '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#bbb;font-size:15px">لا توجد نتائج</div>';
+}
+
+function openModal(id){
+  currentAcc = accounts.find(x=>x.id===id);
+  document.getElementById('mTitle').textContent = currentAcc.title;
+  document.getElementById('mSub').textContent = currentAcc.sub;
+  document.getElementById('mPrice').textContent = currentAcc.priceNew.toFixed(2);
+  document.getElementById('mPriceOld').textContent = '﷼'+currentAcc.priceOld;
+  document.getElementById('mImg').src = getImg(currentAcc.id);
+  document.getElementById('mImg').alt = currentAcc.title;
+  const revs = reviewsDB[id] || reviewsDB[1];
+  document.getElementById('mRatingCount').textContent = revs.length;
+  document.getElementById('qtyInput').value = 1;
+  updateQtyTotal();
+  document.getElementById('reviewsList').innerHTML = revs.map(r=>`
+    <div class="review-item">
+      <div class="review-header">
+        <div class="review-avatar">${r.name.charAt(0)}</div>
+        <div>
+          <div class="review-name">${r.name}</div>
+          <div class="review-stars">${'★'.repeat(r.stars)}</div>
+        </div>
+        <div class="review-date">${r.date}</div>
+      </div>
+      <div class="review-text">${r.text}</div>
+    </div>
+  `).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('open'); }
+function closeModalOutside(e){ if(e.target===document.getElementById('modalOverlay')) closeModal(); }
+
+function changeQty(d){
+  const inp = document.getElementById('qtyInput');
+  inp.value = Math.max(1, Math.min(99, parseInt(inp.value||1)+d));
+  updateQtyTotal();
+}
+
+function updateQtyTotal(){
+  if(!currentAcc) return;
+  const q = parseInt(document.getElementById('qtyInput').value)||1;
+  document.getElementById('qtyTotal').textContent = (currentAcc.priceNew*q).toFixed(2);
+}
+
+function addFromModal(){
+  if(!currentAcc) return;
+  const q = parseInt(document.getElementById('qtyInput').value)||1;
+  addCart(currentAcc.id, q);
+  closeModal();
+}
+
+function toggleFav(id,btn){
+  if(favs.has(id)){favs.delete(id);btn.classList.remove('active');showToast('حُذف من المفضلة');}
+  else{favs.add(id);btn.classList.add('active');showToast('♥ أُضيف للمفضلة');}
+  updateBadges();
+}
+
+function addCart(id, qty=1){
+  const a = accounts.find(x=>x.id===id);
+  const existing = cart.find(x=>x.id===id);
+  if(existing){ existing.qty += qty; showToast('✓ تم تحديث الكمية'); }
+  else{ cart.push({...a, qty}); showToast('✓ أُضيف للسلة'); }
+  updateBadges();
+}
+
+function removeCart(id){ cart=cart.filter(x=>x.id!==id); updateBadges(); renderCartBody(); }
+function removeFav(id){ favs.delete(id); updateBadges(); renderFavBody(); render(); }
+
+function updateBadges(){
+  const total = cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
+  const totalCount = cart.reduce((s,a)=>s+a.qty,0);
+  const cb=document.getElementById('cartBadge'), fb=document.getElementById('favBadge');
+  cb.textContent=totalCount; cb.style.display=totalCount?'flex':'none';
+  fb.textContent=favs.size; fb.style.display=favs.size?'flex':'none';
+  document.getElementById('cartTotalTop').textContent=total.toFixed(2)+' ﷼';
+}
+
+function openPanel(which){
+  document.getElementById('overlay').classList.add('open');
+  if(which==='cart'){document.getElementById('cartPanel').classList.add('open');renderCartBody();}
+  else{document.getElementById('favPanel').classList.add('open');renderFavBody();}
+}
+
+function closePanel(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('favPanel').classList.remove('open');
+}
+
+function renderCartBody(){
+  const el=document.getElementById('cartBody');
+  if(!cart.length){el.innerHTML='<div class="panel-empty">🛒<br>السلة فارغة</div>';return;}
+  const total=cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
+  el.innerHTML=cart.map(a=>`
+    <div class="panel-item">
+      <div class="panel-item-img"><img src="${getImg(a.id)}" alt="${a.title}"></div>
+      <div class="panel-item-info">
+        <div class="panel-item-name">${a.title}</div>
+        <div class="panel-item-qty">الكمية: ${a.qty}</div>
+        <div class="panel-item-price">${(a.priceNew*a.qty).toFixed(2)} ﷼</div>
+      </div>
+      <button class="remove-btn" onclick="removeCart(${a.id})">✕</button>
+    </div>
+  `).join('')+`
+    <div class="panel-total"><span class="panel-total-label">الإجمالي</span><span class="panel-total-val">${total.toFixed(2)} ﷼</span></div>
+    <button class="checkout-btn">إتمام الشراء ←</button>
+  `;
+}
+
+function renderFavBody(){
+  const el=document.getElementById('favBody');
+  const list=accounts.filter(a=>favs.has(a.id));
+  if(!list.length){el.innerHTML='<div class="panel-empty">♥<br>قائمة المفضلة فارغة</div>';return;}
+  el.innerHTML=list.map(a=>`
+    <div class="panel-item">
+      <div class="panel-item-img"><img src="${getImg(a.id)}" alt="${a.title}"></div>
+      <div class="panel-item-info">
+        <div class="panel-item-name">${a.title}</div>
+        <div class="panel-item-price">${a.priceNew.toFixed(2)} ﷼</div>
+      </div>
+      <button class="remove-btn" onclick="removeFav(${a.id})">✕</button>
+    </div>
+  `).join('')+`<button class="checkout-btn" style="background:#c0392b;margin-top:1.5rem" onclick="addAllFavs()">إضافة الكل للسلة ←</button>`;
+}
+
+function addAllFavs(){
+  accounts.filter(a=>favs.has(a.id)).forEach(a=>{
+    const ex=cart.find(x=>x.id===a.id);
+    if(ex) ex.qty++; else cart.push({...a,qty:1});
+  });
+  updateBadges(); showToast('✓ أُضيف الكل للسلة'); closePanel();
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+render();
+</script>
+</body>
+</html>
