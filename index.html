@@ -56,7 +56,6 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:var(--bg);font-family:'Cairo',sans-serif;direction:rtl;color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s}
 
-    /* TOPBAR */
     .topbar{background:var(--topbar-bg);border-bottom:1px solid var(--border);display:flex;align-items:center;
       justify-content:space-between;padding:0 1.5rem;height:62px;position:sticky;top:0;z-index:200;
       box-shadow:0 1px 6px var(--shadow);transition:background 0.3s,border-color 0.3s}
@@ -71,8 +70,7 @@
       padding:8px 16px 8px 40px;font-family:'Cairo',sans-serif;font-size:13px;outline:none;
       transition:border-color 0.2s,background 0.3s;color:var(--text)}
     .search-input:focus{border-color:#4a7cf7;background:var(--card-bg)}
-    .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
-      color:#aaa;font-size:15px;pointer-events:none}
+    .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#aaa;font-size:15px;pointer-events:none}
     .topbar-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .icon-btn{background:var(--icon-btn-bg);border:1px solid var(--border);border-radius:10px;
       padding:7px 14px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
@@ -82,14 +80,12 @@
     .icon-btn.blue:hover{background:#2a3a7e}
     .badge{background:#e74c3c;color:#fff;border-radius:50%;width:18px;height:18px;
       display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;min-width:18px}
-
     .dark-toggle{background:var(--icon-btn-bg);border:1px solid var(--border);border-radius:20px;
       padding:6px 12px;cursor:pointer;font-size:13px;font-weight:600;
       display:flex;align-items:center;gap:6px;color:var(--icon-btn-text);
       transition:all 0.2s;font-family:'Cairo',sans-serif;white-space:nowrap}
     .dark-toggle:hover{border-color:#4a7cf7}
 
-    /* FILTERS */
     .filter-bar{background:var(--filter-bg);border-bottom:1px solid var(--border);padding:0.6rem 1.5rem;
       display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;transition:background 0.3s}
     .filter-bar::-webkit-scrollbar{display:none}
@@ -99,13 +95,11 @@
 
     .page-title-bar{padding:1rem 1.5rem 0.6rem;font-size:15px;font-weight:700;color:var(--text)}
 
-    /* GRID */
     .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 1.5rem 3rem}
     @media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:440px){.grid{grid-template-columns:1fr}}
 
-    /* CARD */
     .card{background:var(--card-bg);border-radius:12px;overflow:hidden;
       box-shadow:0 1px 5px var(--shadow);transition:all 0.22s;cursor:pointer;border:1px solid var(--border)}
     .card:hover{box-shadow:0 6px 22px var(--shadow-hover);transform:translateY(-3px)}
@@ -158,7 +152,7 @@
     .modal-price{font-size:24px;font-weight:700;color:#c0392b}
     .modal-price-old{font-size:14px;color:var(--price-old);text-decoration:line-through}
     .modal-rating{display:flex;align-items:center;gap:8px;margin-bottom:18px}
-    .modal-stars{color:#f39c12;font-size:16px}
+    .modal-stars-display{color:#f39c12;font-size:16px}
     .modal-rating-text{font-size:13px;color:var(--subtext)}
 
     .qty-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
@@ -179,17 +173,38 @@
       cursor:pointer;transition:background 0.2s;margin-bottom:20px}
     .modal-add-btn:hover{background:#2a3a7e}
 
+    /* REVIEWS */
     .reviews-section{border-top:1px solid var(--border);padding-top:16px}
     .reviews-title{font-size:15px;font-weight:700;margin-bottom:12px;color:var(--text)}
     .review-item{padding:12px 0;border-bottom:1px solid var(--review-border)}
     .review-item:last-child{border-bottom:none}
     .review-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
     .review-avatar{width:36px;height:36px;border-radius:50%;background:#1a2a5e;
-      display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+      display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
     .review-name{font-size:13px;font-weight:600;color:var(--text)}
     .review-date{font-size:11px;color:var(--subtext);margin-right:auto}
     .review-stars{color:#f39c12;font-size:12px}
     .review-text{font-size:13px;color:var(--subtext);line-height:1.7}
+
+    /* ADD REVIEW FORM */
+    .add-review-box{background:var(--input-bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px}
+    .add-review-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px}
+    .review-form-row{display:flex;gap:10px;margin-bottom:10px}
+    .review-name-input{flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;
+      padding:8px 12px;font-family:'Cairo',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s}
+    .review-name-input:focus{border-color:#4a7cf7}
+    .stars-select{display:flex;gap:4px;align-items:center;margin-bottom:10px}
+    .stars-select span{font-size:13px;color:var(--subtext);margin-left:8px}
+    .star-btn{font-size:22px;cursor:pointer;color:#ddd;transition:color 0.15s;background:none;border:none;padding:0;line-height:1}
+    .star-btn.lit,.star-btn:hover{color:#f39c12}
+    .review-text-input{width:100%;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;
+      padding:8px 12px;font-family:'Cairo',sans-serif;font-size:13px;color:var(--text);
+      outline:none;resize:vertical;min-height:70px;transition:border-color 0.2s;margin-bottom:10px}
+    .review-text-input:focus{border-color:#4a7cf7}
+    .submit-review-btn{background:#1a2a5e;color:#fff;border:none;border-radius:8px;padding:9px 20px;
+      font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.2s}
+    .submit-review-btn:hover{background:#2a3a7e}
+    .no-reviews{font-size:13px;color:var(--subtext);text-align:center;padding:16px 0}
 
     /* SIDE PANELS */
     .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:300}
@@ -230,12 +245,11 @@
       transition:transform 0.3s;z-index:999;pointer-events:none;white-space:nowrap}
     .toast.show{transform:translateX(-50%) translateY(0)}
 
-    /* INFO PAGES */
+    /* DESC PAGE */
     .info-page{display:none;padding:2rem 1.5rem 3rem;max-width:860px;margin:0 auto;animation:fadeIn 0.3s ease}
     .info-page.active{display:block}
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     .info-hero{background:linear-gradient(135deg,#1a2a5e,#4a7cf7);border-radius:16px;padding:2.5rem 2rem;color:#fff;margin-bottom:2rem;position:relative;overflow:hidden}
-    .info-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:0.4}
     .info-hero h1{font-size:26px;font-weight:700;margin-bottom:10px;position:relative}
     .info-hero p{font-size:14px;line-height:1.9;opacity:0.9;position:relative}
     .info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:2rem}
@@ -264,7 +278,7 @@
 <div class="topbar">
   <div class="logo" onclick="showPage('shop')">
     <div class="logo-icon">
-      <img src="https://i.imgur.com/placeholder.png" id="logoImg" alt="متجر BEST" onerror="this.style.display='none'">
+      <img id="logoImg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAQABAADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAEIAgcFBgkEA//EAGQQAQABAgMDAwsOBg0JBgYDAAACAQMEBQYHERIIITETFyIyQUJRVmGU0hQYUmJxgYKRkpOVobLRFSNUVXKiFjM3RlNXdHWxs9Ph4iQ2RGNlg6TBwiUmJ0OEojQ1R2SFw0Vzpf/EABsBAQACAwEBAAAAAAAAAAAAAAABBAIDBQYH/8QAOREBAAIBAgMECAQFBAMBAAAAAAECAwQRBRJREyExMgYUFSJBUlORFmGBoSMzQnHRNFSxwUPh8fD/2gAMAwEAAhEDEQA/ALlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEgjiBIjiTvAEcRxAkEcQJEJADejiBIjiSAI4jiBIbzeAIOIEiOI4gSI4jiBIjiOIEiOI4gSI4jiBIjiSACOIEiOI4gSI4jiBII4gSI4k7wBHEcQJEAJEcRxAkRxJAEcSQAQCQQCQAA3gAAAG8AEcQJEcSQBHEAkAARxHECRHEcQJEcRxAkRxAJEcRxAkDeAI4k7wARxAkRxAJBHECRHEcQJEcRxAkRxHECRHEkARxHECRHEkARxHECRHEcQJEcRxAkAAAADeACOIEiOI4gSI4gAAAAAAAAAAAAAAAAAAAAAAAADhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOIAAAAAAAAAAAAOIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO+AAOIAAAAAAAAAAAAAAAAAAAABKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4gAAAAAAA6AAAAAAAAAAAAAAAAAADvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QAAAAAAAAAAAAAA70AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADpAAAAAAAA4gAAAAAAAAAOEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4gAAAAAAADiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIpQAAAAAAAAAAAAAAAcIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8IAAIgB3wAAAAAAAAAAAAAAAAAAAAAB3oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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" alt="متجر BEST">
     </div>
     <div class="logo-text">متجر <span>BEST</span></div>
   </div>
@@ -277,7 +291,6 @@
   <div class="topbar-actions">
     <div class="nav-tabs">
       <button class="nav-tab active" id="tab-shop" onclick="showPage('shop')">🏪 المتجر</button>
-      <button class="nav-tab" id="tab-about" onclick="showPage('about')">من نحن</button>
       <button class="nav-tab" id="tab-desc" onclick="showPage('desc')">وصف المتجر</button>
     </div>
     <button class="dark-toggle" onclick="toggleDark()" id="darkBtn">🌙 داكن</button>
@@ -291,7 +304,7 @@
   </div>
 </div>
 
-<!-- ============ SHOP PAGE ============ -->
+<!-- SHOP PAGE -->
 <div id="page-shop">
   <div class="filter-bar">
     <div class="fbtn active" onclick="setFilter(this,'all')">الكل</div>
@@ -312,42 +325,7 @@
   <div class="grid" id="grid"></div>
 </div>
 
-<!-- ============ ABOUT PAGE ============ -->
-<div id="page-about" class="info-page">
-  <div class="info-hero">
-    <h1>🏪 من نحن — متجر BEST</h1>
-    <p>متجر BEST هو متجر مختص ببيع حسابات إلكترونية مضمونة وآمنة وتسليم سريع، ونحرص على تقديم تجربة شراء مميزة لعملائنا.</p>
-  </div>
-  <div class="info-cards">
-    <div class="info-card">
-      <div class="info-card-icon">⚡</div>
-      <h3>تسليم سريع</h3>
-      <p>نضمن لك استلام منتجك بأسرع وقت ممكن فور إتمام عملية الشراء.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🛡️</div>
-      <h3>موثوقية عالية</h3>
-      <p>منتجاتنا مضمونة 100% ونحرص على تقديم أعلى معايير الجودة والأمان.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🎧</div>
-      <h3>دعم فني</h3>
-      <p>فريق دعم فني متاح لحل أي مشكلة قد تواجهها في المنتج عند الحاجة.</p>
-    </div>
-  </div>
-  <div class="info-section">
-    <h2>لماذا تختار متجر BEST؟</h2>
-    <ul>
-      <li><strong>تسليم سريع</strong> — نضمن لك استلام سريع لجميع المنتجات</li>
-      <li><strong>موثوقية عالية</strong> — منتجات مضمونة وذات جودة عالية</li>
-      <li><strong>دعم فني</strong> — لحل مشاكل المنتج إن وجدت</li>
-      <li><strong>أسعار تنافسية</strong> — أفضل الأسعار في السوق</li>
-      <li><strong>تجربة شراء مميزة</strong> — واجهة سهلة وآمنة</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ============ DESCRIPTION PAGE ============ -->
+<!-- DESC PAGE -->
 <div id="page-desc" class="info-page">
   <div class="info-hero">
     <h1>📋 وصف المتجر</h1>
@@ -355,31 +333,17 @@
   </div>
   <div class="info-section">
     <h2>عن متجر BEST</h2>
-    <p>
-      متجر متخصص في بيع حسابات تويتر الجاهزة بمواصفات متنوعة تناسب جميع الاحتياجات، سواء للتسويق أو نشر المحتوى. نوفر حسابات موثوقة بعمر مختلف مع ضمان الجودة والخصوصية. نحرص على تقديم خدمات سريعة وآمنة مع دعم فني مستمر لضمان تجربة سلسة للعملاء. هدفنا مساعدتك في الحصول على ما تحتاجه بأفضل جودة وأنسب سعر.
-    </p>
+    <p>متجر متخصص في بيع حسابات X الجاهزة بمواصفات متنوعة تناسب جميع الاحتياجات، سواء للتسويق أو نشر المحتوى. نوفر حسابات موثوقة بعمر مختلف مع ضمان الجودة والخصوصية. نحرص على تقديم خدمات سريعة وآمنة مع دعم فني مستمر لضمان تجربة سلسة للعملاء.</p>
   </div>
   <div class="info-cards">
-    <div class="info-card">
-      <div class="info-card-icon">📅</div>
-      <h3>حسابات بأعمار متنوعة</h3>
-      <p>من 2006 حتى 2017 — اختر السنة التي تناسب احتياجك.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">✅</div>
-      <h3>ضمان الجودة</h3>
-      <p>كل حساب يمر بفحص دقيق قبل البيع لضمان المواصفات المطلوبة.</p>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">🔒</div>
-      <h3>الخصوصية والأمان</h3>
-      <p>نحافظ على خصوصية عملائنا وأمان بياناتهم بالكامل.</p>
-    </div>
+    <div class="info-card"><div class="info-card-icon">📅</div><h3>حسابات بأعمار متنوعة</h3><p>من 2006 حتى 2017 — اختر السنة التي تناسب احتياجك.</p></div>
+    <div class="info-card"><div class="info-card-icon">✅</div><h3>ضمان الجودة</h3><p>كل حساب يمر بفحص دقيق قبل البيع لضمان المواصفات المطلوبة.</p></div>
+    <div class="info-card"><div class="info-card-icon">🔒</div><h3>الخصوصية والأمان</h3><p>نحافظ على خصوصية عملائنا وأمان بياناتهم بالكامل.</p></div>
   </div>
   <div class="info-section">
     <h2>ماذا نقدم؟</h2>
     <ul>
-      <li>حسابات تويتر قديمة بعمر يتراوح من 2006 إلى 2017</li>
+      <li>حسابات X قديمة بعمر يتراوح من 2006 إلى 2017</li>
       <li>مناسبة للتسويق الإلكتروني ونشر المحتوى</li>
       <li>تسليم فوري بعد إتمام الدفع</li>
       <li>ضمان الجودة والأصالة لكل حساب</li>
@@ -392,15 +356,13 @@
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-img">
-      <img id="mImg" src="" alt="">
-    </div>
+    <div class="modal-img"><img id="mImg" src="" alt=""></div>
     <div class="modal-body">
       <div class="modal-title" id="mTitle"></div>
       <div class="modal-sub" id="mSub"></div>
       <div class="modal-rating">
-        <span class="modal-stars">★★★★★</span>
-        <span class="modal-rating-text">5.0 — بناءً على <span id="mRatingCount">0</span> تقييم</span>
+        <span class="modal-stars-display" id="mStarsDisplay">☆☆☆☆☆</span>
+        <span class="modal-rating-text">— <span id="mRatingCount">0</span> تقييم</span>
       </div>
       <div class="modal-price-row">
         <span class="modal-price" id="mPrice"></span>
@@ -418,9 +380,27 @@
       </div>
       <div style="font-size:11px;color:var(--subtext);margin-bottom:16px;margin-top:-12px">الحد الأقصى للطلب: 5 قطع</div>
       <button class="modal-add-btn" onclick="addFromModal()">🛒 إضافة للسلة</button>
+
+      <!-- REVIEWS -->
       <div class="reviews-section">
         <div class="reviews-title">تقييمات المنتج</div>
         <div id="reviewsList"></div>
+
+        <!-- ADD REVIEW FORM -->
+        <div class="add-review-box">
+          <div class="add-review-title">أضف تقييمك</div>
+          <input class="review-name-input" id="reviewerName" placeholder="اسمك" style="width:100%;margin-bottom:10px">
+          <div class="stars-select">
+            <span>تقييمك:</span>
+            <button class="star-btn" data-val="1" onclick="setReviewStar(1)">★</button>
+            <button class="star-btn" data-val="2" onclick="setReviewStar(2)">★</button>
+            <button class="star-btn" data-val="3" onclick="setReviewStar(3)">★</button>
+            <button class="star-btn" data-val="4" onclick="setReviewStar(4)">★</button>
+            <button class="star-btn" data-val="5" onclick="setReviewStar(5)">★</button>
+          </div>
+          <textarea class="review-text-input" id="reviewText" placeholder="اكتب تجربتك مع المنتج..."></textarea>
+          <button class="submit-review-btn" onclick="submitReview()">إرسال التقييم</button>
+        </div>
       </div>
     </div>
   </div>
@@ -431,19 +411,13 @@
 
 <!-- CART PANEL -->
 <div class="side-panel" id="cartPanel">
-  <div class="panel-header">
-    <h2>🛒 سلة الشراء</h2>
-    <button class="close-btn" onclick="closePanel()">✕</button>
-  </div>
+  <div class="panel-header"><h2>🛒 سلة الشراء</h2><button class="close-btn" onclick="closePanel()">✕</button></div>
   <div class="panel-body" id="cartBody"></div>
 </div>
 
 <!-- FAV PANEL -->
 <div class="side-panel" id="favPanel">
-  <div class="panel-header">
-    <h2>♥ المفضلة</h2>
-    <button class="close-btn" onclick="closePanel()">✕</button>
-  </div>
+  <div class="panel-header"><h2>♥ المفضلة</h2><button class="close-btn" onclick="closePanel()">✕</button></div>
   <div class="panel-body" id="favBody"></div>
 </div>
 
@@ -451,94 +425,47 @@
 
 <script>
 const MAX_QTY = 5;
+const LOGO_SRC = document.getElementById('logoImg').src;
 
-// =====================================================
-// الصور المرفوعة — مُحوَّلة إلى Base64 عند التحميل
-// =====================================================
-let LOGO_SRC = '';      // صورة اللوجو
-let PRODUCT_SRC = '';   // صورة المنتجات
-
-// نحمل الصور من الملفات المرفوعة وندمجها في الصفحة
-async function loadUploadedImages() {
-  // لوجو المتجر
-  try {
-    const r1 = await fetch('/mnt/user-data/uploads/1777984316469_image.png');
-    const b1 = await r1.blob();
-    LOGO_SRC = await blobToBase64(b1);
-    document.getElementById('logoImg').src = LOGO_SRC;
-    document.getElementById('logoImg').style.display = 'block';
-  } catch(e) { console.log('logo load error', e); }
-
-  // صورة المنتجات
-  try {
-    const r2 = await fetch('/mnt/user-data/uploads/1777984319439_image.png');
-    const b2 = await r2.blob();
-    PRODUCT_SRC = await blobToBase64(b2);
-  } catch(e) { console.log('product img load error', e); }
-
-  render();
-}
-
-function blobToBase64(blob) {
-  return new Promise((res, rej) => {
-    const reader = new FileReader();
-    reader.onload = () => res(reader.result);
-    reader.onerror = rej;
-    reader.readAsDataURL(blob);
-  });
-}
-
-function getImg() {
-  // الآن كل المنتجات تستخدم صورة X المرفوعة
-  return PRODUCT_SRC || 'https://picsum.photos/seed/42/400/280';
-}
-
-const reviewsDB = {
-  1:[{name:'أحمد العمري',date:'منذ أسبوع',stars:5,text:'حساب ممتاز جداً، التسليم كان فوري والدعم سريع. أنصح الجميع بالتعامل مع المتجر.'},
-     {name:'سلطان الغامدي',date:'منذ أسبوعين',stars:5,text:'حساب قديم وموثوق، اشتريته بسعر مناسب وكل شيء تمام.'},
-     {name:'نورة السهلي',date:'منذ شهر',stars:4,text:'جيد ومناسب للسعر، التواصل مع المتجر ممتاز.'}],
-  2:[{name:'خالد المطيري',date:'منذ 3 أيام',stars:5,text:'حساب 2007 أصلي ونظيف، ما توقعت يكون بهالجودة.'},
-     {name:'ريم العتيبي',date:'منذ أسبوع',stars:5,text:'سريع وموثوق، شكراً متجر BEST!'}],
-  3:[{name:'فيصل الدوسري',date:'منذ يومين',stars:5,text:'أفضل متجر للحسابات القديمة بصراحة، تجربة رائعة.'},
-     {name:'هند الزهراني',date:'منذ أسبوع',stars:4,text:'الحساب تمام والسعر معقول، تسليم خلال دقائق.'}],
-};
+// Reviews stored per product id
+const reviewsDB = {};
 
 const accounts = [
-  {id:1,year:2006,title:'حساب X قديم 2006',sub:'إنشاء 2006',priceOld:80,priceNew:29.99,discount:63},
-  {id:2,year:2007,title:'حساب X قديم 2007',sub:'إنشاء 2007',priceOld:70,priceNew:24.99,discount:64},
-  {id:3,year:2008,title:'حساب X قديم 2008',sub:'إنشاء 2008',priceOld:60,priceNew:19.99,discount:67},
-  {id:4,year:2009,title:'حساب X قديم 2009',sub:'إنشاء 2009',priceOld:49,priceNew:12.99,discount:73},
-  {id:5,year:2010,title:'حساب X قديم 2010',sub:'إنشاء 2010',priceOld:35,priceNew:15.99,discount:54},
-  {id:6,year:2011,title:'حساب X قديم 2011',sub:'إنشاء 2011',priceOld:30,priceNew:17.00,discount:43},
-  {id:7,year:2012,title:'حساب X قديم 2012',sub:'إنشاء 2012',priceOld:25,priceNew:14.00,discount:44},
-  {id:8,year:2013,title:'حساب X قديم 2013',sub:'إنشاء 2013',priceOld:22,priceNew:12.00,discount:45},
-  {id:9,year:2014,title:'حساب X قديم 2014',sub:'إنشاء 2014',priceOld:20,priceNew:11.00,discount:45},
-  {id:10,year:2015,title:'حساب X قديم 2015',sub:'إنشاء 2015',priceOld:49,priceNew:12.99,discount:73},
-  {id:11,year:2016,title:'حساب X إنشاء 2016',sub:'إنشاء 2016',priceOld:44.99,priceNew:10.99,discount:76},
-  {id:12,year:2017,title:'حساب X إنشاء 2017',sub:'إنشاء 2017',priceOld:30,priceNew:11.99,discount:60},
+  {id:1,year:2006,title:'حساب X — إنشاء 2006',sub:'إنشاء 2006',priceOld:80,priceNew:29.99,discount:63},
+  {id:2,year:2007,title:'حساب X — إنشاء 2007',sub:'إنشاء 2007',priceOld:70,priceNew:24.99,discount:64},
+  {id:3,year:2008,title:'حساب X — إنشاء 2008',sub:'إنشاء 2008',priceOld:60,priceNew:19.99,discount:67},
+  {id:4,year:2009,title:'حساب X — إنشاء 2009',sub:'إنشاء 2009',priceOld:49,priceNew:12.99,discount:73},
+  {id:5,year:2010,title:'حساب X — إنشاء 2010',sub:'إنشاء 2010',priceOld:35,priceNew:15.99,discount:54},
+  {id:6,year:2011,title:'حساب X — إنشاء 2011',sub:'إنشاء 2011',priceOld:30,priceNew:17.00,discount:43},
+  {id:7,year:2012,title:'حساب X — إنشاء 2012',sub:'إنشاء 2012',priceOld:25,priceNew:14.00,discount:44},
+  {id:8,year:2013,title:'حساب X — إنشاء 2013',sub:'إنشاء 2013',priceOld:22,priceNew:12.00,discount:45},
+  {id:9,year:2014,title:'حساب X — إنشاء 2014',sub:'إنشاء 2014',priceOld:20,priceNew:11.00,discount:45},
+  {id:10,year:2015,title:'حساب X — إنشاء 2015',sub:'إنشاء 2015',priceOld:49,priceNew:12.99,discount:73},
+  {id:11,year:2016,title:'حساب X — إنشاء 2016',sub:'إنشاء 2016',priceOld:44.99,priceNew:10.99,discount:76},
+  {id:12,year:2017,title:'حساب X — إنشاء 2017',sub:'إنشاء 2017',priceOld:30,priceNew:11.99,discount:60},
 ];
 
 let activeFilter='all', searchQ='', cart=[], favs=new Set(), currentAcc=null;
-let isDark = false;
+let isDark=false, reviewStarSelected=0;
 
-function showPage(page) {
-  ['shop','about','desc'].forEach(p => {
-    const el = document.getElementById('page-'+p);
-    const tab = document.getElementById('tab-'+p);
-    if(p === page) {
-      if(p === 'shop') el.style.display = 'block'; else el.classList.add('active');
+function showPage(page){
+  ['shop','desc'].forEach(p=>{
+    const el=document.getElementById('page-'+p);
+    const tab=document.getElementById('tab-'+p);
+    if(p===page){
+      if(p==='shop') el.style.display='block'; else el.classList.add('active');
       if(tab) tab.classList.add('active');
     } else {
-      if(p === 'shop') el.style.display = 'none'; else el.classList.remove('active');
+      if(p==='shop') el.style.display='none'; else el.classList.remove('active');
       if(tab) tab.classList.remove('active');
     }
   });
 }
 
 function toggleDark(){
-  isDark = !isDark;
-  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
-  document.getElementById('darkBtn').textContent = isDark ? '☀️ فاتح' : '🌙 داكن';
+  isDark=!isDark;
+  document.documentElement.setAttribute('data-theme',isDark?'dark':'');
+  document.getElementById('darkBtn').textContent=isDark?'☀️ فاتح':'🌙 داكن';
 }
 
 function setFilter(el,val){
@@ -547,28 +474,45 @@ function setFilter(el,val){
 }
 
 function doSearch(){
-  searchQ = document.getElementById('searchInput').value.trim().toLowerCase();
-  render();
+  searchQ=document.getElementById('searchInput').value.trim().toLowerCase(); render();
+}
+
+function getAvgStars(id){
+  const revs=reviewsDB[id]||[];
+  if(!revs.length) return 0;
+  return revs.reduce((s,r)=>s+r.stars,0)/revs.length;
+}
+
+function starsHtml(avg){
+  let h='';
+  for(let i=1;i<=5;i++) h+=i<=Math.round(avg)?'★':'☆';
+  return h;
 }
 
 function render(){
-  let list = accounts.filter(a=>{
-    const matchF = activeFilter==='all'||String(a.year)===activeFilter;
-    const matchQ = !searchQ || String(a.year).includes(searchQ) || a.title.includes(searchQ);
-    return matchF && matchQ;
+  let list=accounts.filter(a=>{
+    const matchF=activeFilter==='all'||String(a.year)===activeFilter;
+    const matchQ=!searchQ||String(a.year).includes(searchQ)||a.title.includes(searchQ);
+    return matchF&&matchQ;
   });
-  const imgSrc = getImg();
-  document.getElementById('grid').innerHTML = list.length ? list.map(a=>`
+  document.getElementById('grid').innerHTML=list.length?list.map(a=>{
+    const avg=getAvgStars(a.id);
+    const cnt=(reviewsDB[a.id]||[]).length;
+    const starsDisp=avg>0?starsHtml(avg):'☆☆☆☆☆';
+    return `
     <div class="card" onclick="openModal(${a.id})">
       <div class="card-img">
-        <img src="${imgSrc}" alt="${a.title}" loading="lazy">
+        <img src="${LOGO_SRC}" alt="${a.title}" loading="lazy">
         <button class="btn-fav ${favs.has(a.id)?'active':''}" onclick="event.stopPropagation();toggleFav(${a.id},this)">♥</button>
         <div class="card-badge">-${a.discount}%</div>
       </div>
       <div class="card-body">
         <div class="card-title">${a.title}</div>
         <div class="card-sub">${a.sub}</div>
-        <div class="rating"><span class="stars">★★★★★</span><span class="rating-count">5</span></div>
+        <div class="rating">
+          <span class="stars">${starsDisp}</span>
+          <span class="rating-count">${cnt>0?cnt+' تقييم':'لا يوجد تقييم'}</span>
+        </div>
         <div class="price-row">
           <span class="price-new">${a.priceNew.toFixed(2)}</span>
           <span class="price-cur">﷼</span>
@@ -576,60 +520,102 @@ function render(){
         </div>
         <button class="add-btn" onclick="event.stopPropagation();addCart(${a.id},1)">🛒 إضافة للسلة</button>
       </div>
-    </div>
-  `).join('') : '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#bbb;font-size:15px">لا توجد نتائج</div>';
+    </div>`;
+  }).join(''):'<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#bbb;font-size:15px">لا توجد نتائج</div>';
 }
 
 function openModal(id){
-  currentAcc = accounts.find(x=>x.id===id);
-  document.getElementById('mTitle').textContent = currentAcc.title;
-  document.getElementById('mSub').textContent = currentAcc.sub;
-  document.getElementById('mPrice').textContent = currentAcc.priceNew.toFixed(2);
-  document.getElementById('mPriceOld').textContent = '﷼'+currentAcc.priceOld;
-  document.getElementById('mImg').src = getImg();
-  document.getElementById('mImg').alt = currentAcc.title;
-  const revs = reviewsDB[id] || reviewsDB[1];
-  document.getElementById('mRatingCount').textContent = revs.length;
-  document.getElementById('qtyInput').value = 1;
-  document.getElementById('qtyInput').max = MAX_QTY;
+  currentAcc=accounts.find(x=>x.id===id);
+  document.getElementById('mTitle').textContent=currentAcc.title;
+  document.getElementById('mSub').textContent=currentAcc.sub;
+  document.getElementById('mPrice').textContent=currentAcc.priceNew.toFixed(2);
+  document.getElementById('mPriceOld').textContent='﷼'+currentAcc.priceOld;
+  document.getElementById('mImg').src=LOGO_SRC;
+  document.getElementById('mImg').alt=currentAcc.title;
+  document.getElementById('qtyInput').value=1;
+  document.getElementById('qtyInput').max=MAX_QTY;
+  reviewStarSelected=0;
+  document.getElementById('reviewerName').value='';
+  document.getElementById('reviewText').value='';
   updateQtyTotal();
-  document.getElementById('reviewsList').innerHTML = revs.map(r=>`
-    <div class="review-item">
-      <div class="review-header">
-        <div class="review-avatar">${r.name.charAt(0)}</div>
-        <div>
-          <div class="review-name">${r.name}</div>
-          <div class="review-stars">${'★'.repeat(r.stars)}</div>
-        </div>
-        <div class="review-date">${r.date}</div>
-      </div>
-      <div class="review-text">${r.text}</div>
-    </div>
-  `).join('');
+  renderReviews(id);
   document.getElementById('modalOverlay').classList.add('open');
+}
+
+function renderReviews(id){
+  const revs=reviewsDB[id]||[];
+  const avg=getAvgStars(id);
+  const cnt=revs.length;
+  document.getElementById('mRatingCount').textContent=cnt;
+  document.getElementById('mStarsDisplay').textContent=cnt>0?starsHtml(avg):'☆☆☆☆☆';
+  // reset star buttons
+  setReviewStarUI(0);
+  document.getElementById('reviewsList').innerHTML=revs.length?
+    revs.map(r=>`
+      <div class="review-item">
+        <div class="review-header">
+          <div class="review-avatar">${r.name.trim().charAt(0)||'?'}</div>
+          <div>
+            <div class="review-name">${r.name}</div>
+            <div class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+          </div>
+          <div class="review-date">${r.date}</div>
+        </div>
+        <div class="review-text">${r.text}</div>
+      </div>
+    `).join('')
+    :'<div class="no-reviews">لا توجد تقييمات بعد — كن أول من يقيّم!</div>';
+}
+
+function setReviewStar(val){
+  reviewStarSelected=val;
+  setReviewStarUI(val);
+}
+
+function setReviewStarUI(val){
+  document.querySelectorAll('.star-btn').forEach(b=>{
+    b.classList.toggle('lit', parseInt(b.dataset.val)<=val);
+  });
+}
+
+function submitReview(){
+  if(!currentAcc) return;
+  const name=document.getElementById('reviewerName').value.trim();
+  const text=document.getElementById('reviewText').value.trim();
+  if(!name){showToast('⚠️ أدخل اسمك'); return;}
+  if(!reviewStarSelected){showToast('⚠️ اختر عدد النجوم'); return;}
+  if(!text){showToast('⚠️ اكتب تعليقك'); return;}
+  const id=currentAcc.id;
+  if(!reviewsDB[id]) reviewsDB[id]=[];
+  reviewsDB[id].unshift({name,stars:reviewStarSelected,text,date:'الآن'});
+  document.getElementById('reviewerName').value='';
+  document.getElementById('reviewText').value='';
+  reviewStarSelected=0;
+  renderReviews(id);
+  render();
+  showToast('✓ تم إضافة تقييمك، شكراً!');
 }
 
 function closeModal(){ document.getElementById('modalOverlay').classList.remove('open'); }
 function closeModalOutside(e){ if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 
 function changeQty(d){
-  const inp = document.getElementById('qtyInput');
-  inp.value = Math.max(1, Math.min(MAX_QTY, parseInt(inp.value||1)+d));
+  const inp=document.getElementById('qtyInput');
+  inp.value=Math.max(1,Math.min(MAX_QTY,parseInt(inp.value||1)+d));
   updateQtyTotal();
 }
 
 function updateQtyTotal(){
   if(!currentAcc) return;
-  const q = Math.min(MAX_QTY, parseInt(document.getElementById('qtyInput').value)||1);
-  document.getElementById('qtyInput').value = q;
-  document.getElementById('qtyTotal').textContent = (currentAcc.priceNew*q).toFixed(2);
+  const q=Math.min(MAX_QTY,parseInt(document.getElementById('qtyInput').value)||1);
+  document.getElementById('qtyInput').value=q;
+  document.getElementById('qtyTotal').textContent=(currentAcc.priceNew*q).toFixed(2);
 }
 
 function addFromModal(){
   if(!currentAcc) return;
-  const q = Math.min(MAX_QTY, parseInt(document.getElementById('qtyInput').value)||1);
-  addCart(currentAcc.id, q);
-  closeModal();
+  const q=Math.min(MAX_QTY,parseInt(document.getElementById('qtyInput').value)||1);
+  addCart(currentAcc.id,q); closeModal();
 }
 
 function toggleFav(id,btn){
@@ -638,17 +624,15 @@ function toggleFav(id,btn){
   updateBadges();
 }
 
-function addCart(id, qty=1){
-  const a = accounts.find(x=>x.id===id);
-  const existing = cart.find(x=>x.id===id);
+function addCart(id,qty=1){
+  const a=accounts.find(x=>x.id===id);
+  const existing=cart.find(x=>x.id===id);
   if(existing){
-    const newQty = Math.min(MAX_QTY, existing.qty + qty);
-    if(newQty === existing.qty){ showToast('⚠️ وصلت للحد الأقصى (5)'); return; }
-    existing.qty = newQty;
-    showToast('✓ تم تحديث الكمية');
+    const newQty=Math.min(MAX_QTY,existing.qty+qty);
+    if(newQty===existing.qty){showToast('⚠️ وصلت للحد الأقصى (5)');return;}
+    existing.qty=newQty; showToast('✓ تم تحديث الكمية');
   } else {
-    cart.push({...a, qty: Math.min(MAX_QTY, qty)});
-    showToast('✓ أُضيف للسلة');
+    cart.push({...a,qty:Math.min(MAX_QTY,qty)}); showToast('✓ أُضيف للسلة');
   }
   updateBadges();
 }
@@ -657,9 +641,9 @@ function removeCart(id){ cart=cart.filter(x=>x.id!==id); updateBadges(); renderC
 function removeFav(id){ favs.delete(id); updateBadges(); renderFavBody(); render(); }
 
 function updateBadges(){
-  const total = cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
-  const totalCount = cart.reduce((s,a)=>s+a.qty,0);
-  const cb=document.getElementById('cartBadge'), fb=document.getElementById('favBadge');
+  const total=cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
+  const totalCount=cart.reduce((s,a)=>s+a.qty,0);
+  const cb=document.getElementById('cartBadge'),fb=document.getElementById('favBadge');
   cb.textContent=totalCount; cb.style.display=totalCount?'flex':'none';
   fb.textContent=favs.size; fb.style.display=favs.size?'flex':'none';
   document.getElementById('cartTotalTop').textContent=total.toFixed(2)+' ﷼';
@@ -681,10 +665,9 @@ function renderCartBody(){
   const el=document.getElementById('cartBody');
   if(!cart.length){el.innerHTML='<div class="panel-empty">🛒<br>السلة فارغة</div>';return;}
   const total=cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
-  const imgSrc = getImg();
   el.innerHTML=cart.map(a=>`
     <div class="panel-item">
-      <div class="panel-item-img"><img src="${imgSrc}" alt="${a.title}"></div>
+      <div class="panel-item-img"><img src="${LOGO_SRC}" alt="${a.title}"></div>
       <div class="panel-item-info">
         <div class="panel-item-name">${a.title}</div>
         <div class="panel-item-qty">الكمية: ${a.qty} / ${MAX_QTY}</div>
@@ -694,18 +677,16 @@ function renderCartBody(){
     </div>
   `).join('')+`
     <div class="panel-total"><span class="panel-total-label">الإجمالي</span><span class="panel-total-val">${total.toFixed(2)} ﷼</span></div>
-    <button class="checkout-btn">إتمام الشراء ←</button>
-  `;
+    <button class="checkout-btn">إتمام الشراء ←</button>`;
 }
 
 function renderFavBody(){
   const el=document.getElementById('favBody');
   const list=accounts.filter(a=>favs.has(a.id));
   if(!list.length){el.innerHTML='<div class="panel-empty">♥<br>قائمة المفضلة فارغة</div>';return;}
-  const imgSrc = getImg();
   el.innerHTML=list.map(a=>`
     <div class="panel-item">
-      <div class="panel-item-img"><img src="${imgSrc}" alt="${a.title}"></div>
+      <div class="panel-item-img"><img src="${LOGO_SRC}" alt="${a.title}"></div>
       <div class="panel-item-info">
         <div class="panel-item-name">${a.title}</div>
         <div class="panel-item-price">${a.priceNew.toFixed(2)} ﷼</div>
@@ -718,7 +699,7 @@ function renderFavBody(){
 function addAllFavs(){
   accounts.filter(a=>favs.has(a.id)).forEach(a=>{
     const ex=cart.find(x=>x.id===a.id);
-    if(ex) ex.qty=Math.min(MAX_QTY, ex.qty+1); else cart.push({...a,qty:1});
+    if(ex) ex.qty=Math.min(MAX_QTY,ex.qty+1); else cart.push({...a,qty:1});
   });
   updateBadges(); showToast('✓ أُضيف الكل للسلة'); closePanel();
 }
@@ -729,8 +710,7 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),2200);
 }
 
-// تحميل الصور المرفوعة ثم عرض المتجر
-loadUploadedImages();
+render();
 </script>
 </body>
 </html>
