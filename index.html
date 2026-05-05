@@ -61,8 +61,8 @@
       justify-content:space-between;padding:0 1.5rem;height:62px;position:sticky;top:0;z-index:200;
       box-shadow:0 1px 6px var(--shadow);transition:background 0.3s,border-color 0.3s}
     .logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
-    .logo-icon{height:44px;width:44px;border-radius:10px;background:linear-gradient(135deg,#1a2a5e,#4a7cf7);
-      display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .logo-icon{height:44px;width:44px;border-radius:10px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff}
+    .logo-icon img{width:100%;height:100%;object-fit:contain}
     .logo-text{font-size:17px;font-weight:700;color:var(--text);line-height:1.2;transition:color 0.3s}
     .logo-text span{color:#4a7cf7}
     .topbar-mid{flex:1;max-width:360px;margin:0 1.5rem}
@@ -83,7 +83,6 @@
     .badge{background:#e74c3c;color:#fff;border-radius:50%;width:18px;height:18px;
       display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;min-width:18px}
 
-    /* DARK MODE TOGGLE */
     .dark-toggle{background:var(--icon-btn-bg);border:1px solid var(--border);border-radius:20px;
       padding:6px 12px;cursor:pointer;font-size:13px;font-weight:600;
       display:flex;align-items:center;gap:6px;color:var(--icon-btn-text);
@@ -110,7 +109,7 @@
     .card{background:var(--card-bg);border-radius:12px;overflow:hidden;
       box-shadow:0 1px 5px var(--shadow);transition:all 0.22s;cursor:pointer;border:1px solid var(--border)}
     .card:hover{box-shadow:0 6px 22px var(--shadow-hover);transform:translateY(-3px)}
-    .card-img{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .card-img{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000}
     .card-img img{width:100%;height:100%;object-fit:cover;display:block}
     .btn-fav{position:absolute;top:10px;right:10px;z-index:3;
       background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.1);
@@ -150,7 +149,7 @@
       border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:18px;
       display:flex;align-items:center;justify-content:center;color:#fff;z-index:10}
     .modal-close:hover{background:rgba(0,0,0,0.4)}
-    .modal-img{height:260px;position:relative;overflow:hidden;border-radius:16px 16px 0 0}
+    .modal-img{height:260px;position:relative;overflow:hidden;border-radius:16px 16px 0 0;background:#000}
     .modal-img img{width:100%;height:100%;object-fit:cover}
     .modal-body{padding:1.4rem 1.5rem}
     .modal-title{font-size:20px;font-weight:700;margin-bottom:6px;color:var(--text)}
@@ -207,7 +206,7 @@
       cursor:pointer;font-size:17px;color:var(--icon-btn-text);display:flex;align-items:center;justify-content:center}
     .panel-body{padding:0.8rem 1.2rem 1.5rem}
     .panel-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--panel-item-border)}
-    .panel-item-img{width:54px;height:54px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--border)}
+    .panel-item-img{width:54px;height:54px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#000}
     .panel-item-img img{width:100%;height:100%;object-fit:cover}
     .panel-item-info{flex:1}
     .panel-item-name{font-size:13px;font-weight:600;color:var(--text)}
@@ -251,7 +250,6 @@
     .info-section ul{padding-right:1.2rem;margin-top:8px}
     .info-section ul li{font-size:13px;color:var(--subtext);line-height:2;list-style:disc}
 
-    /* NAV TABS in topbar */
     .nav-tabs{display:flex;align-items:center;gap:4px}
     .nav-tab{background:none;border:1px solid transparent;border-radius:8px;padding:6px 12px;
       font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;cursor:pointer;
@@ -266,9 +264,7 @@
 <div class="topbar">
   <div class="logo" onclick="showPage('shop')">
     <div class="logo-icon">
-      <svg width="26" height="26" viewBox="0 0 1200 1227" fill="none">
-        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.828Z" fill="white"/>
-      </svg>
+      <img src="https://i.imgur.com/placeholder.png" id="logoImg" alt="متجر BEST" onerror="this.style.display='none'">
     </div>
     <div class="logo-text">متجر <span>BEST</span></div>
   </div>
@@ -456,9 +452,45 @@
 <script>
 const MAX_QTY = 5;
 
-function getImg(id) {
-  const seeds = {1:10,2:20,3:30,4:40,5:50,6:60,7:70,8:80,9:90,10:100,11:110,12:120};
-  return `https://picsum.photos/seed/${seeds[id]||id*10}/400/280`;
+// =====================================================
+// الصور المرفوعة — مُحوَّلة إلى Base64 عند التحميل
+// =====================================================
+let LOGO_SRC = '';      // صورة اللوجو
+let PRODUCT_SRC = '';   // صورة المنتجات
+
+// نحمل الصور من الملفات المرفوعة وندمجها في الصفحة
+async function loadUploadedImages() {
+  // لوجو المتجر
+  try {
+    const r1 = await fetch('/mnt/user-data/uploads/1777984316469_image.png');
+    const b1 = await r1.blob();
+    LOGO_SRC = await blobToBase64(b1);
+    document.getElementById('logoImg').src = LOGO_SRC;
+    document.getElementById('logoImg').style.display = 'block';
+  } catch(e) { console.log('logo load error', e); }
+
+  // صورة المنتجات
+  try {
+    const r2 = await fetch('/mnt/user-data/uploads/1777984319439_image.png');
+    const b2 = await r2.blob();
+    PRODUCT_SRC = await blobToBase64(b2);
+  } catch(e) { console.log('product img load error', e); }
+
+  render();
+}
+
+function blobToBase64(blob) {
+  return new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.onload = () => res(reader.result);
+    reader.onerror = rej;
+    reader.readAsDataURL(blob);
+  });
+}
+
+function getImg() {
+  // الآن كل المنتجات تستخدم صورة X المرفوعة
+  return PRODUCT_SRC || 'https://picsum.photos/seed/42/400/280';
 }
 
 const reviewsDB = {
@@ -489,7 +521,6 @@ const accounts = [
 let activeFilter='all', searchQ='', cart=[], favs=new Set(), currentAcc=null;
 let isDark = false;
 
-// Page navigation
 function showPage(page) {
   ['shop','about','desc'].forEach(p => {
     const el = document.getElementById('page-'+p);
@@ -526,10 +557,11 @@ function render(){
     const matchQ = !searchQ || String(a.year).includes(searchQ) || a.title.includes(searchQ);
     return matchF && matchQ;
   });
+  const imgSrc = getImg();
   document.getElementById('grid').innerHTML = list.length ? list.map(a=>`
     <div class="card" onclick="openModal(${a.id})">
       <div class="card-img">
-        <img src="${getImg(a.id)}" alt="${a.title}" loading="lazy" onerror="this.src='https://picsum.photos/seed/${a.id*7}/400/280'">
+        <img src="${imgSrc}" alt="${a.title}" loading="lazy">
         <button class="btn-fav ${favs.has(a.id)?'active':''}" onclick="event.stopPropagation();toggleFav(${a.id},this)">♥</button>
         <div class="card-badge">-${a.discount}%</div>
       </div>
@@ -554,7 +586,7 @@ function openModal(id){
   document.getElementById('mSub').textContent = currentAcc.sub;
   document.getElementById('mPrice').textContent = currentAcc.priceNew.toFixed(2);
   document.getElementById('mPriceOld').textContent = '﷼'+currentAcc.priceOld;
-  document.getElementById('mImg').src = getImg(currentAcc.id);
+  document.getElementById('mImg').src = getImg();
   document.getElementById('mImg').alt = currentAcc.title;
   const revs = reviewsDB[id] || reviewsDB[1];
   document.getElementById('mRatingCount').textContent = revs.length;
@@ -649,9 +681,10 @@ function renderCartBody(){
   const el=document.getElementById('cartBody');
   if(!cart.length){el.innerHTML='<div class="panel-empty">🛒<br>السلة فارغة</div>';return;}
   const total=cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
+  const imgSrc = getImg();
   el.innerHTML=cart.map(a=>`
     <div class="panel-item">
-      <div class="panel-item-img"><img src="${getImg(a.id)}" alt="${a.title}"></div>
+      <div class="panel-item-img"><img src="${imgSrc}" alt="${a.title}"></div>
       <div class="panel-item-info">
         <div class="panel-item-name">${a.title}</div>
         <div class="panel-item-qty">الكمية: ${a.qty} / ${MAX_QTY}</div>
@@ -669,9 +702,10 @@ function renderFavBody(){
   const el=document.getElementById('favBody');
   const list=accounts.filter(a=>favs.has(a.id));
   if(!list.length){el.innerHTML='<div class="panel-empty">♥<br>قائمة المفضلة فارغة</div>';return;}
+  const imgSrc = getImg();
   el.innerHTML=list.map(a=>`
     <div class="panel-item">
-      <div class="panel-item-img"><img src="${getImg(a.id)}" alt="${a.title}"></div>
+      <div class="panel-item-img"><img src="${imgSrc}" alt="${a.title}"></div>
       <div class="panel-item-info">
         <div class="panel-item-name">${a.title}</div>
         <div class="panel-item-price">${a.priceNew.toFixed(2)} ﷼</div>
@@ -695,7 +729,8 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),2200);
 }
 
-render();
+// تحميل الصور المرفوعة ثم عرض المتجر
+loadUploadedImages();
 </script>
 </body>
 </html>
