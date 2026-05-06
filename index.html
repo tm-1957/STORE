@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>متجر BESTمتجر </title>
+  <title>متجر BEST</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
@@ -38,10 +38,6 @@
     body.dark .auth-input{background:#2a2d3a;border-color:#3a3d4a;color:#e5e5e5}
     body.dark .auth-input:focus{background:#1a1d27;border-color:#4a7cf7}
     .auth-input.ltr{direction:ltr;text-align:left}
-    .auth-input-icon-wrap{position:relative}
-    .auth-input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
-      font-size:16px;pointer-events:none;opacity:0.5}
-    .auth-input-icon-wrap .auth-input{padding-left:40px}
     .pass-toggle{position:absolute;left:12px;top:50%;transform:translateY(-50%);
       background:none;border:none;cursor:pointer;font-size:16px;padding:0;opacity:0.5;transition:opacity 0.2s}
     .pass-toggle:hover{opacity:1}
@@ -238,9 +234,7 @@
     .toggle-sw input:checked + .toggle-slider::before{transform:translateX(-20px)}
     body.dark .toggle-slider{background:#3a3d4a}
 
-    /* ══════════════════════════════════════
-       TOPBAR — DESKTOP
-    ══════════════════════════════════════ */
+    /* TOPBAR — DESKTOP */
     .topbar{
       background:#fff;border-bottom:1px solid #e5e5e5;
       display:flex;align-items:center;justify-content:space-between;
@@ -279,101 +273,52 @@
     body.dark .dark-toggle{background:#2a2d3a;border-color:#3a3d4a}
     body.dark .dark-toggle:hover{background:#3a3d4a}
 
-    /* المرحلة المخفية على الجوال */
     .desktop-only{display:flex}
     .mobile-only{display:none}
 
-    /* ══════════════════════════════════════
-       MOBILE TOPBAR — شاشات ≤ 640px
-    ══════════════════════════════════════ */
+    /* MOBILE TOPBAR */
     @media(max-width:640px){
       .desktop-only{display:none !important}
       .mobile-only{display:flex !important}
-
-      /* الشريط العلوي جوال */
-      .topbar{
-        height:auto;
-        flex-wrap:wrap;
-        padding:0;
-        gap:0;
-        position:sticky;top:0;z-index:200
-      }
-
-      /* صف أول: لوغو + أزرار الأيقونات */
-      .topbar-row1{
-        display:flex;align-items:center;justify-content:space-between;
-        width:100%;padding:10px 14px;gap:8px
-      }
-
-      /* صف ثاني: البحث */
-      .topbar-row2{
-        display:flex;align-items:center;
-        width:100%;padding:0 14px 10px;
-      }
+      .topbar{height:auto;flex-wrap:wrap;padding:0;gap:0;position:sticky;top:0;z-index:200}
+      .topbar-row1{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 14px;gap:8px}
+      .topbar-row2{display:flex;align-items:center;width:100%;padding:0 14px 10px;}
       .topbar-row2 .search-wrap{flex:1}
-      .topbar-row2 .search-input{
-        width:100%;font-size:14px;
-        padding:10px 16px 10px 40px;
-        border-radius:14px
-      }
-
+      .topbar-row2 .search-input{width:100%;font-size:14px;padding:10px 16px 10px 40px;border-radius:14px}
       .logo img{height:36px;width:36px}
       .logo-text{font-size:15px}
-
-      /* أزرار الجوال في الصف الأول */
       .mobile-top-btns{display:flex;align-items:center;gap:6px}
-
-      /* زر السلة على الجوال */
-      .mobile-cart-btn{
-        background:#1a2a5e;color:#fff;border:none;border-radius:10px;
+      .mobile-cart-btn{background:#1a2a5e;color:#fff;border:none;border-radius:10px;
         padding:8px 12px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;
-        cursor:pointer;display:flex;align-items:center;gap:5px;position:relative
-      }
-      .mobile-fav-btn{
-        background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;
+        cursor:pointer;display:flex;align-items:center;gap:5px;position:relative}
+      .mobile-fav-btn{background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;
         padding:8px 10px;font-family:'Cairo',sans-serif;font-size:14px;
-        cursor:pointer;display:flex;align-items:center;gap:4px;position:relative;color:#333
-      }
+        cursor:pointer;display:flex;align-items:center;gap:4px;position:relative;color:#333}
       body.dark .mobile-fav-btn{background:#2a2d3a;border-color:#3a3d4a;color:#ccc}
-
-      /* زر القائمة الجانبية */
-      .mobile-menu-btn{
-        background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;
-        padding:8px 10px;font-size:18px;cursor:pointer;line-height:1
-      }
+      .mobile-menu-btn{background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;
+        padding:8px 10px;font-size:18px;cursor:pointer;line-height:1}
       body.dark .mobile-menu-btn{background:#2a2d3a;border-color:#3a3d4a}
     }
 
-    /* ══════════════════════════════════════
-       MOBILE MENU PANEL (قائمة منسدلة)
-    ══════════════════════════════════════ */
-    .mobile-menu-panel{
-      display:none;position:fixed;top:0;right:0;width:80%;max-width:300px;height:100vh;
+    /* MOBILE MENU PANEL */
+    .mobile-menu-panel{display:none;position:fixed;top:0;right:0;width:80%;max-width:300px;height:100vh;
       background:#fff;z-index:800;overflow-y:auto;
       box-shadow:-4px 0 24px rgba(0,0,0,0.18);
-      transition:transform 0.28s cubic-bezier(.4,0,.2,1);
-      transform:translateX(100%)
-    }
+      transition:transform 0.28s cubic-bezier(.4,0,.2,1);transform:translateX(100%)}
     .mobile-menu-panel.open{display:block;transform:translateX(0)}
-    .mobile-menu-header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:1rem 1.2rem;border-bottom:1px solid #f0f0f0;background:#f8f9ff
-    }
+    .mobile-menu-header{display:flex;align-items:center;justify-content:space-between;
+      padding:1rem 1.2rem;border-bottom:1px solid #f0f0f0;background:#f8f9ff}
     body.dark .mobile-menu-header{background:#131620;border-color:#2a2d3a}
     .mobile-menu-title{font-size:16px;font-weight:700;color:#1a2a5e}
     body.dark .mobile-menu-title{color:#c9d4f0}
     .mobile-menu-body{padding:0.5rem 0}
-    .mobile-menu-item{
-      display:flex;align-items:center;gap:12px;padding:14px 1.2rem;
+    .mobile-menu-item{display:flex;align-items:center;gap:12px;padding:14px 1.2rem;
       font-size:14px;font-weight:600;color:#333;cursor:pointer;
-      border-bottom:1px solid #f5f5f5;transition:background 0.15s
-    }
+      border-bottom:1px solid #f5f5f5;transition:background 0.15s}
     .mobile-menu-item:hover{background:#f5f7ff}
     .mobile-menu-item:last-child{border-bottom:none}
     .mobile-menu-item-icon{font-size:18px;width:28px;text-align:center}
-    .mobile-menu-user-section{
-      padding:1rem 1.2rem;border-bottom:1px solid #f0f0f0;background:#f8f9ff
-    }
+    .mobile-menu-user-section{padding:1rem 1.2rem;border-bottom:1px solid #f0f0f0;background:#f8f9ff}
     body.dark .mobile-menu-user-section{background:#131620;border-color:#2a2d3a}
     .mobile-menu-user-name{font-size:15px;font-weight:700;color:#1a2a5e;margin-bottom:2px}
     body.dark .mobile-menu-user-name{color:#c9d4f0}
@@ -381,19 +326,6 @@
     .mobile-menu-divider{height:1px;background:#f0f0f0;margin:4px 0}
     body.dark .mobile-menu-divider{background:#2a2d3a}
     .mobile-menu-danger{color:#e74c3c !important}
-
-    /* لون المتجر على الجوال */
-    .mobile-color-row{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 1.2rem;border-bottom:1px solid #f5f5f5
-    }
-    .mobile-color-swatches{display:flex;gap:8px;flex-wrap:wrap}
-    .mobile-swatch{
-      width:28px;height:28px;border-radius:8px;cursor:pointer;
-      border:2px solid transparent;transition:all 0.15s
-    }
-    .mobile-swatch.active{border-color:#fff;box-shadow:0 0 0 2px #333}
-    body.dark .mobile-swatch.active{box-shadow:0 0 0 2px #fff}
 
     /* FILTERS */
     .filter-bar{background:#fff;border-bottom:1px solid #eee;padding:0.6rem 1rem;
@@ -455,9 +387,7 @@
     /* MODAL */
     .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:500;
       align-items:flex-end;justify-content:center;padding:0}
-    @media(min-width:641px){
-      .modal-overlay{align-items:center;padding:1rem}
-    }
+    @media(min-width:641px){.modal-overlay{align-items:center;padding:1rem}}
     .modal-overlay.open{display:flex}
     .modal{background:#fff;border-radius:0;width:100%;max-width:100%;
       height:90vh;overflow-y:auto;position:relative;
@@ -465,25 +395,17 @@
       border-radius:20px 20px 0 0}
     @media(min-width:641px){
       .modal{border-radius:16px;width:100%;max-width:680px;height:auto;max-height:90vh;
-        animation:modalIn 0.25s ease}
-    }
+        animation:modalIn 0.25s ease}}
     @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
     @keyframes modalIn{from{transform:scale(0.95);opacity:0}to{transform:scale(1);opacity:1}}
-
-    /* شريط سحب الـ Modal على الجوال */
-    .modal-drag-bar{
-      width:40px;height:4px;background:#ddd;border-radius:2px;
-      margin:10px auto 0;display:none
-    }
+    .modal-drag-bar{width:40px;height:4px;background:#ddd;border-radius:2px;margin:10px auto 0;display:none}
     @media(max-width:640px){.modal-drag-bar{display:block}}
     body.dark .modal-drag-bar{background:#3a3d4a}
-
     .modal-close{position:absolute;top:14px;left:14px;background:#f5f5f5;border:none;
       border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:18px;
       display:flex;align-items:center;justify-content:center;color:#666;z-index:1}
     .modal-close:hover{background:#eee}
-    .modal-img{height:200px;background:#000;display:flex;align-items:center;justify-content:center;
-      position:relative;overflow:hidden}
+    .modal-img{height:200px;background:#000;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
     @media(max-width:640px){.modal-img{height:160px;border-radius:0}}
     @media(min-width:641px){.modal-img{border-radius:16px 16px 0 0}}
     .modal-img::before{content:'';position:absolute;inset:0;
@@ -501,7 +423,6 @@
     .modal-rating{display:flex;align-items:center;gap:8px;margin-bottom:16px}
     .modal-stars{color:#f39c12;font-size:16px}
     .modal-rating-text{font-size:13px;color:#888}
-
     .qty-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
     .qty-label{font-size:14px;font-weight:600;color:#333}
     .qty-ctrl{display:flex;align-items:center;gap:0;border:1.5px solid #e5e5e5;border-radius:10px;overflow:hidden}
@@ -513,7 +434,6 @@
       height:40px;background:#fff;font-family:'Cairo',sans-serif}
     .qty-total{font-size:14px;color:#888}
     .qty-total span{color:#c0392b;font-weight:700}
-
     .modal-add-btn{display:flex;align-items:center;justify-content:center;gap:8px;
       width:100%;background:#1a2a5e;color:#fff;border:none;border-radius:10px;
       padding:14px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
@@ -541,7 +461,6 @@
       padding:11px 24px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;
       cursor:pointer;transition:background 0.2s;width:100%}
     .submit-review-btn:hover{background:#2a3a7e}
-
     .reviews-section{border-top:1px solid #f0f0f0;padding-top:16px}
     body.dark .reviews-section{border-color:#2a2d3a}
     .reviews-title{font-size:15px;font-weight:700;margin-bottom:12px;color:#111}
@@ -568,8 +487,7 @@
       position:sticky;top:0;background:#fff;z-index:1}
     .panel-header h2{font-size:16px;font-weight:700}
     .close-btn{background:#f5f5f5;border:none;border-radius:50%;width:36px;height:36px;
-      cursor:pointer;font-size:17px;color:#666;display:flex;align-items:center;justify-content:center;
-      flex-shrink:0}
+      cursor:pointer;font-size:17px;color:#666;display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .panel-body{padding:0.8rem 1.2rem 5rem}
     .panel-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f5f5f5}
     .panel-item-img{width:44px;height:44px;border-radius:8px;background:#000;
@@ -586,55 +504,40 @@
     .panel-total-label{font-size:14px;font-weight:600}
     .panel-total-val{font-size:20px;font-weight:700;color:#c0392b}
 
-    /* WHATSAPP CHECKOUT BUTTON */
-    .wa-checkout-btn{
-      display:flex;align-items:center;justify-content:center;gap:10px;
+    /* WHATSAPP BUTTON */
+    .wa-checkout-btn{display:flex;align-items:center;justify-content:center;gap:10px;
       width:100%;margin-top:1rem;
       background:linear-gradient(135deg,#25d366,#1da851);
       color:#fff;border:none;border-radius:12px;
-      padding:15px 16px;
-      font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
-      cursor:pointer;text-align:center;text-decoration:none;
-      transition:all 0.2s;
+      padding:15px 16px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
+      cursor:pointer;text-align:center;text-decoration:none;transition:all 0.2s;
       box-shadow:0 4px 14px rgba(37,211,102,0.35)}
-    .wa-checkout-btn:hover{
-      background:linear-gradient(135deg,#20c25c,#178a43);
-      box-shadow:0 6px 20px rgba(37,211,102,0.45);
-      transform:translateY(-1px)}
+    .wa-checkout-btn:hover{background:linear-gradient(135deg,#20c25c,#178a43);
+      box-shadow:0 6px 20px rgba(37,211,102,0.45);transform:translateY(-1px)}
     .wa-checkout-btn:active{transform:translateY(0)}
     .wa-icon{width:22px;height:22px;flex-shrink:0}
-
     .checkout-btn{display:block;width:100%;margin-top:1rem;background:#1a2a5e;color:#fff;
       border:none;border-radius:10px;padding:13px;font-family:'Cairo',sans-serif;
       font-size:14px;font-weight:700;cursor:pointer;text-align:center;transition:background 0.2s}
     .checkout-btn:hover{background:#2a3a7e}
     .panel-empty{text-align:center;color:#bbb;padding:3rem 0;font-size:14px;line-height:2.2}
 
-    /* BOTTOM NAV — جوال فقط */
-    .bottom-nav{
-      display:none;
-      position:fixed;bottom:0;left:0;right:0;z-index:250;
-      background:#fff;border-top:1px solid #eee;
-      padding:0;height:60px;
-      box-shadow:0 -2px 12px rgba(0,0,0,0.09)
-    }
+    /* BOTTOM NAV */
+    .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:250;
+      background:#fff;border-top:1px solid #eee;padding:0;height:60px;
+      box-shadow:0 -2px 12px rgba(0,0,0,0.09)}
     body.dark .bottom-nav{background:#1a1d27;border-color:#2a2d3a}
     @media(max-width:640px){.bottom-nav{display:flex}}
-    .bottom-nav-item{
-      flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:3px;cursor:pointer;padding:6px 4px;
-      font-family:'Cairo',sans-serif;font-size:10px;font-weight:600;color:#888;
-      position:relative;transition:color 0.15s;border:none;background:none
-    }
+    .bottom-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:3px;cursor:pointer;padding:6px 4px;font-family:'Cairo',sans-serif;font-size:10px;font-weight:600;color:#888;
+      position:relative;transition:color 0.15s;border:none;background:none}
     .bottom-nav-item.active,.bottom-nav-item:active{color:#1a2a5e}
     body.dark .bottom-nav-item.active,body.dark .bottom-nav-item:active{color:#7a9cf7}
     .bottom-nav-icon{font-size:20px;line-height:1}
-    .bottom-nav-badge{
-      position:absolute;top:4px;right:18%;
+    .bottom-nav-badge{position:absolute;top:4px;right:18%;
       background:#e74c3c;color:#fff;border-radius:50%;
       width:16px;height:16px;font-size:9px;font-weight:700;
-      display:none;align-items:center;justify-content:center
-    }
+      display:none;align-items:center;justify-content:center}
     .bottom-nav-cart-total{font-size:9px;color:#c0392b;font-weight:700;white-space:nowrap}
 
     /* INFO MODAL */
@@ -644,10 +547,7 @@
     .info-modal-overlay.open{display:flex}
     .info-modal{background:#fff;width:100%;max-width:100%;max-height:85vh;overflow-y:auto;
       border-radius:20px 20px 0 0;animation:slideUp 0.28s cubic-bezier(.4,0,.2,1)}
-    @media(min-width:641px){
-      .info-modal{border-radius:16px;max-width:580px;
-        animation:modalIn 0.25s ease}
-    }
+    @media(min-width:641px){.info-modal{border-radius:16px;max-width:580px;animation:modalIn 0.25s ease}}
     .info-modal-header{display:flex;align-items:center;justify-content:space-between;
       padding:1rem 1.2rem;border-bottom:1px solid #f0f0f0;background:#f8f9ff}
     @media(min-width:641px){.info-modal-header{border-radius:16px 16px 0 0}}
@@ -671,47 +571,11 @@
       max-width:90vw;text-align:center}
     @media(min-width:641px){.toast{bottom:2rem}}
     .toast.show{transform:translateX(-50%) translateY(0)}
-
     .no-stock{font-size:11px;color:#e74c3c;font-weight:600;margin-top:4px}
 
-    /* THEME COLOR SYSTEM */
-    :root{
-      --primary:#1a1d27;--primary-dark:#0f1117;
-      --primary-light:#2a2d3a;--accent:#4a7cf7
-    }
-
-    /* Color Picker */
-    .color-picker-wrap{position:relative}
-    .color-picker-btn{
-      background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;
-      padding:7px 12px;font-size:16px;cursor:pointer;transition:all 0.2s;line-height:1;
-      display:flex;align-items:center;gap:6px
-    }
-    .color-picker-btn:hover{background:#eee}
-    body.dark .color-picker-btn{background:#2a2d3a;border-color:#3a3d4a}
-    .color-palette{
-      display:none;position:absolute;top:calc(100% + 8px);left:50%;
-      transform:translateX(-50%);background:#fff;border:1px solid #e5e5e5;
-      border-radius:14px;padding:12px;box-shadow:0 10px 40px rgba(0,0,0,0.15);
-      z-index:700;width:200px;animation:dropIn 0.2s cubic-bezier(.4,0,.2,1)
-    }
-    body.dark .color-palette{background:#1a1d27;border-color:#2a2d3a}
-    .color-palette.open{display:block}
-    .color-palette-title{font-size:11px;font-weight:700;color:#aaa;text-align:center;margin-bottom:10px;letter-spacing:0.5px}
-    .color-swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-    .swatch{width:36px;height:36px;border-radius:10px;cursor:pointer;
-      border:2px solid transparent;transition:all 0.15s;
-      display:flex;align-items:center;justify-content:center}
-    .swatch:hover{transform:scale(1.12)}
-    .swatch.active{border-color:#fff;box-shadow:0 0 0 2px #333}
-    body.dark .swatch.active{box-shadow:0 0 0 2px #fff}
-    .swatch-label{font-size:10px;color:#888;text-align:center;margin-top:5px;font-family:'Cairo',sans-serif}
-    .swatch-item{display:flex;flex-direction:column;align-items:center}
-
-    /* تعطيل التحديد على الجوال */
     @media(max-width:640px){
       .fbtn,.add-btn,.bottom-nav-item,.card{-webkit-tap-highlight-color:transparent}
-      input,textarea{font-size:16px !important} /* يمنع الزووم التلقائي */
+      input,textarea{font-size:16px !important}
     }
   </style>
 </head>
@@ -841,14 +705,14 @@
   </div>
 </div>
 
-<!-- ══════════════════ TOPBAR ══════════════════ -->
+<!-- TOPBAR -->
 <div class="topbar" id="mainTopbar">
 
-  <!-- ── صف الجوال الأول ── -->
+  <!-- موبايل - صف أول -->
   <div class="topbar-row1 mobile-only">
     <div class="logo">
-      <img src="data:image/png;base64,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" alt="BEST" style="height:36px;width:36px;object-fit:contain;border-radius:8px">
-      <div class="logo-text">BEST<span></span></div>
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/wAARCABAAEADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUCAwYBAAf/xAAvEAACAQMDAgQFBQEAAAAAAAABAgMABBEFEiExBhNBUWEiMnGBkaHBFCNC0fD/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACURAAICAgIBBAMAAAAAAAAAAAABAgMREiFBMVFhBBMiQnH/2gAMAwEAAhEDEQA/APnVNSntZg8MjI3cg4zWjSePNftZAVv5Co6K+GH614uSwbBGD60fS2kdxhM/ID6VnKlKW7M1Rk3ox2bxl4hvV2yalKB/gQv9q5m5nluJDJNI0jHqzHJqRbWE82cRnHfpSv2W5Y9FP0qyMIx2RZGlFblp7EViG8V2yFIGQpYdfKpbWlcWsZ2gZBJIB8s0yNldXHlXw9h0qvuIvsJuYSMLncv5VT2jxVhWjuVW4iHJCE88+X5UpLa2kWWGWAcLFJkA9WByKgWdw1vIJBGsh2ld25d2D2OKmm8cA7YAMdz1PzqMp8Xsm+Qcbe2P6qlQvFBNHJdsFJHJGTj6Cq9KPFI1hdJDYWUYgZ5m3KwbDIeuaiXOmRG8UWi5IUtkHHPeiGJjUMhJZh5jHSr7eFVjBLvg9M8q0VJLgVqnJLkpzaZPbqfaIyp5kgnH/ACorO2mvbqKCL7zMqr9T0rQ3sF7a2oknTCJg7xt8LFc7cSPNKXY8k5p2mopGnUko8GgfXRaW4t7OEqgG0yFuT9KV8SBIVGcBRimRQhvfkDpuOfmKjazh3RvBVgQe3nWEopLREKot7tEGFmWQBTgjORXlvbNcqzKMBDzXRbdFWQLknPFPDQQvHO3b1q6DqUVEuqVqPJFZ2jXiurSILJCMqTzxT2HSZ7a2a8MR9pjx14+laBPCtnDHDGc7m8s9abQ2UcURiCfJOaWeVJeyGdUfZXK7dpJgFAMEnrxXF3cD/AJG5bGUAJ+dOr62ki35ABHSgd1bBLlwvTPX61nCTi7KKtSjwWDSg3SShLfD4I64HHFINtFLMiGVgqnGB5n0q1cxMXBUHB5wKjw2+X3EHb2pklS2KxqnLiXxZ3aDyEbcDknnFaiwMcW4KGBUDPb1qEIiYCxU5HaqsMOW9skj5CrNPqJKzOVdW2RPJJQAAABI4+tO7LT3SIJ3C9gR0qJY2QMhkOWHQelXeYjAqy9iSgkgDHzrGfcNy0CvXlxAGtDGFJGCMnr+6JE7AqFI9vt+v3XbW2eW3XRWRDwAAKg27xhQJBhiMsO9VV0VJpSSNH9M3cJxKhGBxyRTMlHdIXe5i1fS7nT7hobiMq6ngZz+hxUO1hkDlpBhM8H/ald7qk93KZJXLHt0/RqrbmXzNacVFWiuSTe7LNjaq7KH5CthT/AMpn9x+VcVqFtJPq97JGOHuZG/mxrqbBGSCNGxlVAOO+BWW1q2S21i8jQYHtHH+JJ/muS1JOU2VW5OLSY7bXLWdoXkjkAJRIz7Y8+cVwbvPRjXbNaQ+5F2GR9KKW8KFlUKM96sjBxMqlFR4Q0EzLg81IfEg61b9mH/oD5CjtxuyfTHUiuf0nzq2EJJH/9k=" alt="BEST" style="height:36px;width:36px;object-fit:contain;border-radius:8px">
+      <div class="logo-text">متجر BEST</div>
     </div>
     <div class="mobile-top-btns">
       <button class="dark-toggle" id="darkToggleMobile" onclick="toggleDark()" style="padding:8px 10px;font-size:16px">🌙</button>
@@ -863,7 +727,7 @@
     </div>
   </div>
 
-  <!-- ── صف البحث على الجوال ── -->
+  <!-- موبايل - صف البحث -->
   <div class="topbar-row2 mobile-only">
     <div class="search-wrap" style="flex:1">
       <span class="search-icon">🔍</span>
@@ -871,10 +735,10 @@
     </div>
   </div>
 
-  <!-- ── ديسكتوب ── -->
+  <!-- ديسكتوب -->
   <div class="logo desktop-only">
     <img src="data:image/png;base64,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" alt="BEST" style="height:44px;width:44px;object-fit:contain;border-radius:8px">
-    <div class="logo-text">BEST<span></span></div>
+    <div class="logo-text">متجر BEST</div>
   </div>
   <div class="topbar-mid desktop-only">
     <div class="search-wrap">
@@ -885,15 +749,6 @@
   <div class="topbar-actions desktop-only">
     <button class="topbar-nav-btn" onclick="openInfoModal('about')">من نحن</button>
     <button class="topbar-nav-btn" onclick="openInfoModal('desc')">وصف المتجر</button>
-    <div class="color-picker-wrap" id="colorPickerWrap">
-      <button class="color-picker-btn" onclick="toggleColorPalette(event)">
-        🎨 <span id="colorPickerDot" style="width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block"></span>
-      </button>
-      <div class="color-palette" id="colorPalette">
-        <div class="color-palette-title">لون المتجر</div>
-        <div class="color-swatches" id="colorSwatches"></div>
-      </div>
-    </div>
     <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
     <div class="user-badge-wrap" id="userBadgeWrap"></div>
     <button class="icon-btn" onclick="openPanel('fav')">♥ المفضلة <span class="badge" id="favBadge" style="display:none">0</span></button>
@@ -909,10 +764,6 @@
   </div>
   <div id="mobileMenuUserSection"></div>
   <div class="mobile-menu-body">
-    <div class="mobile-color-row">
-      <span style="font-size:13px;font-weight:600;color:#555">🎨 لون المتجر</span>
-      <div class="mobile-color-swatches" id="mobileColorSwatches"></div>
-    </div>
     <div class="mobile-menu-divider"></div>
     <div class="mobile-menu-item" onclick="openInfoModal('about');closeMobileMenu()">
       <span class="mobile-menu-item-icon">🏪</span><span>من نحن</span>
@@ -1027,7 +878,7 @@
   <div class="panel-body" id="favBody"></div>
 </div>
 
-<!-- BOTTOM NAV (جوال) -->
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav" id="bottomNav">
   <button class="bottom-nav-item" onclick="scrollToTop()">
     <span class="bottom-nav-icon">🏠</span>
@@ -1052,9 +903,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════
 // AUTH
-// ══════════════════════════════════════
 function getUsers(){try{return JSON.parse(localStorage.getItem('bestUsers')||'{}')}catch(e){return{}}}
 function saveUsers(u){localStorage.setItem('bestUsers',JSON.stringify(u))}
 function hashSimple(str){let h=0;for(let i=0;i<str.length;i++){h=((h<<5)-h)+str.charCodeAt(i);h|=0}return h.toString(36)}
@@ -1154,9 +1003,7 @@ function doForgot(){
   setTimeout(()=>{suc.textContent='✅ إذا كان الإيميل مسجلاً، سيصلك الرابط قريباً';btn.disabled=false;btn.innerHTML='إرسال رابط الاستعادة';},900);
 }
 
-// ══════════════════════════════════════
 // DROPDOWN
-// ══════════════════════════════════════
 let dropdownOpen=false;
 function toggleDropdown(e){
   e.stopPropagation();dropdownOpen=!dropdownOpen;
@@ -1226,9 +1073,7 @@ function logoutUser(){
   showToast('👋 تم تسجيل الخروج');
 }
 
-// ══════════════════════════════════════
 // MOBILE MENU
-// ══════════════════════════════════════
 function openMobileMenu(){
   document.getElementById('mobileMenuPanel').classList.add('open');
   document.getElementById('overlay').classList.add('open');
@@ -1265,20 +1110,9 @@ function renderMobileMenuContent(){
       <div class="mobile-menu-item" onclick="closeMobileMenu();document.getElementById('authTabs').style.display='';switchAuthMode('register');document.getElementById('authOverlay').classList.add('open');"><span class="mobile-menu-item-icon">➕</span><span>إنشاء حساب</span></div>
       <div class="mobile-menu-item" onclick="openSettingsModal()"><span class="mobile-menu-item-icon">⚙️</span><span>الإعدادات</span></div>`;
   }
-  // ألوان الجوال
-  const mcs=document.getElementById('mobileColorSwatches');
-  if(mcs){
-    mcs.innerHTML=COLOR_THEMES.map((t,i)=>`
-      <div class="mobile-swatch ${i===activeThemeIdx?'active':''}" 
-           style="background:linear-gradient(135deg,${t.accent},${t.primary})"
-           onclick="applyTheme(${i});renderMobileMenuContent()"
-           title="${t.name}"></div>`).join('');
-  }
 }
 
-// ══════════════════════════════════════
 // SESSION RESTORE
-// ══════════════════════════════════════
 window.currentUser=null;
 const saved=localStorage.getItem('bestUser');
 const wasGuest=localStorage.getItem('bestGuest')==='1';
@@ -1286,9 +1120,25 @@ if(saved){try{window.currentUser=JSON.parse(saved);document.getElementById('auth
 else if(wasGuest){document.getElementById('authOverlay').classList.remove('open')}
 else{document.getElementById('authOverlay').classList.add('open')}
 
-// ══════════════════════════════════════
+// DARK MODE
+if(localStorage.getItem('bestDark')===null){
+  document.body.classList.add('dark');
+  ['darkToggle','darkToggleMobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='☀️'});
+  localStorage.setItem('bestDark','1');
+} else if(localStorage.getItem('bestDark')==='1'){
+  document.body.classList.add('dark');
+  ['darkToggle','darkToggleMobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='☀️'});
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  const isDark=document.body.classList.contains('dark');
+  ['darkToggle','darkToggleMobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=isDark?'☀️':'🌙'});
+  localStorage.setItem('bestDark',isDark?'1':'0');
+  const st=document.getElementById('darkToggleSetting');if(st)st.checked=isDark;
+}
+
 // STORE DATA
-// ══════════════════════════════════════
 const X_PATH="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.828Z";
 const mkX=w=>`<svg width="${w}" height="${w}" viewBox="0 0 1200 1227" fill="none"><path d="${X_PATH}" fill="white"/></svg>`;
 const WA_NUMBER='966535427779';
@@ -1313,122 +1163,17 @@ let activeFilter='all',searchQ='',cart=[],favs=new Set(),currentAcc=null,selecte
 let orderCounter=parseInt(localStorage.getItem('bestOrderCounter')||'1000');
 function generateOrderId(){orderCounter++;localStorage.setItem('bestOrderCounter',orderCounter);return'BST-'+orderCounter}
 
-// ══════════════════════════════════════
-// THEME
-// ══════════════════════════════════════
-const COLOR_THEMES=[
-  {name:'داكن',primary:'#1a1d27',dark:'#0f1117',light:'#2a2d3a',accent:'#4a7cf7'},
-  {name:'أزرق',primary:'#1a2a5e',dark:'#0f1a40',light:'#2a3a7e',accent:'#4a7cf7'},
-  {name:'بنفسجي',primary:'#2d1b69',dark:'#1a0e3d',light:'#3d2880',accent:'#7c5cf7'},
-  {name:'أخضر',primary:'#0d3b2e',dark:'#061f18',light:'#1a5240',accent:'#27ae60'},
-  {name:'أحمر',primary:'#5e1a1a',dark:'#3d0f0f',light:'#7e2a2a',accent:'#e74c3c'},
-  {name:'بني',primary:'#3b2415',dark:'#1f120a',light:'#523320',accent:'#d4813a'},
-  {name:'رمادي',primary:'#2c2c2c',dark:'#1a1a1a',light:'#3d3d3d',accent:'#888'},
-  {name:'فيروزي',primary:'#0d3b4a',dark:'#071f27',light:'#1a5265',accent:'#17a2b8'},
-];
-let activeThemeIdx=parseInt(localStorage.getItem('bestThemeIdx')||'0');
-let colorPaletteOpen=false;
-
-function applyTheme(idx,save=true){
-  const t=COLOR_THEMES[idx];activeThemeIdx=idx;
-  const root=document.documentElement;
-  root.style.setProperty('--primary',t.primary);
-  root.style.setProperty('--primary-dark',t.dark);
-  root.style.setProperty('--primary-light',t.light);
-  root.style.setProperty('--accent',t.accent);
-  let el=document.getElementById('theme-override');
-  if(!el){el=document.createElement('style');el.id='theme-override';document.head.appendChild(el)}
-  el.textContent=`
-    body.dark .topbar{background:${t.primary};border-color:${t.light}}
-    body.dark .filter-bar{background:${t.primary};border-color:${t.light}}
-    body.dark .card{background:${t.primary}}
-    body.dark .side-panel{background:${t.primary}}
-    body.dark .panel-header{background:${t.primary};border-color:${t.light}}
-    body.dark .modal{background:${t.primary}}
-    body.dark .info-modal{background:${t.primary}}
-    body.dark .auth-box{background:${t.primary}}
-    body.dark .edit-modal{background:${t.primary}}
-    body.dark .settings-modal{background:${t.primary}}
-    body.dark .user-dropdown{background:${t.primary};border-color:${t.light}}
-    body.dark .mobile-menu-panel{background:${t.primary}}
-    body.dark .bottom-nav{background:${t.primary};border-color:${t.light}}
-    .fbtn.active,.fbtn:hover{background:${t.accent};border-color:${t.accent}}
-    body.dark .fbtn.active,body.dark .fbtn:hover{background:${t.accent};border-color:${t.accent}}
-    .auth-btn{background:${t.accent}} .auth-btn:hover{background:${t.light}}
-    .icon-btn.blue{background:${t.accent};border-color:${t.accent}} .icon-btn.blue:hover{background:${t.light}}
-    .mobile-cart-btn{background:${t.accent}}
-    .modal-add-btn,.add-btn:hover,.checkout-btn,.edit-save-btn,.submit-review-btn{background:${t.accent}}
-    .modal-add-btn:hover,.checkout-btn:hover,.edit-save-btn:hover{background:${t.light}}
-    .user-avatar,.review-avatar,.dropdown-avatar-lg,.info-point-icon{background:${t.accent}}
-    .toggle-sw input:checked + .toggle-slider{background:${t.accent}}
-    .auth-input:focus{border-color:${t.accent}}
-    .add-btn{border-color:${t.accent};color:${t.accent}}
-    .auth-tab.active{color:${t.accent}}
-    .auth-switch-link,.forgot-link{color:${t.accent}}
-    #colorPickerDot{background:${t.accent}!important}
-    .logo-text span{color:${t.accent}}
-    .auth-title{color:${t.accent}}
-    .bottom-nav-item.active{color:${t.accent}}
-    body.dark .bottom-nav-item.active{color:${t.accent}}
-  `;
-  if(save)localStorage.setItem('bestThemeIdx',idx);
-  renderSwatches();
-}
-
-function renderSwatches(){
-  const wrap=document.getElementById('colorSwatches');
-  if(!wrap)return;
-  wrap.innerHTML=COLOR_THEMES.map((t,i)=>`
-    <div class="swatch-item" onclick="applyTheme(${i});closeColorPalette()">
-      <div class="swatch ${i===activeThemeIdx?'active':''}" style="background:linear-gradient(135deg,${t.accent},${t.primary})" title="${t.name}">
-        ${i===activeThemeIdx?'<span style="color:#fff;font-size:14px">✓</span>':''}
-      </div>
-      <div class="swatch-label">${t.name}</div>
-    </div>`).join('');
-}
-
-function toggleColorPalette(e){
-  e.stopPropagation();colorPaletteOpen=!colorPaletteOpen;
-  document.getElementById('colorPalette').classList.toggle('open',colorPaletteOpen);
-}
-function closeColorPalette(){colorPaletteOpen=false;const el=document.getElementById('colorPalette');if(el)el.classList.remove('open')}
-document.addEventListener('click',e=>{if(!e.target.closest('#colorPickerWrap'))closeColorPalette()});
-
-applyTheme(activeThemeIdx,false);
-
-// الوضع الداكن
-if(localStorage.getItem('bestDark')===null){
-  document.body.classList.add('dark');
-  ['darkToggle','darkToggleMobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='☀️'});
-  localStorage.setItem('bestDark','1');
-} else if(localStorage.getItem('bestDark')==='1'){
-  document.body.classList.add('dark');
-  ['darkToggle','darkToggleMobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='☀️'});
-}
-
-function toggleDark(){
-  document.body.classList.toggle('dark');
-  const isDark=document.body.classList.contains('dark');
-  ['darkToggle','darkToggleMobile'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=isDark?'☀️':'🌙'});
-  localStorage.setItem('bestDark',isDark?'1':'0');
-  const st=document.getElementById('darkToggleSetting');if(st)st.checked=isDark;
-}
-
-// ══════════════════════════════════════
-// RENDER & FILTER
-// ══════════════════════════════════════
+// RENDER
 function setFilter(el,val){
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');activeFilter=val;render();
 }
 function doSearch(){
   searchQ=(document.getElementById('searchInput')||document.getElementById('searchInputMobile')).value.trim().toLowerCase();
-  // sync both inputs
   const si=document.getElementById('searchInput');const sm=document.getElementById('searchInputMobile');
   if(si)si.value=searchQ;if(sm)sm.value=searchQ;
   render();
 }
-// sync search inputs
 ['searchInput','searchInputMobile'].forEach(id=>{
   const el=document.getElementById(id);
   if(el)el.addEventListener('input',function(){
@@ -1465,9 +1210,7 @@ function render(){
     </div>`}).join(''):'<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#bbb;font-size:15px">لا توجد نتائج</div>';
 }
 
-// ══════════════════════════════════════
 // USER BADGE
-// ══════════════════════════════════════
 function renderUserBadge(){
   const wrap=document.getElementById('userBadgeWrap');
   if(!wrap)return;
@@ -1511,9 +1254,7 @@ function updateWelcomeBar(){
 
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
 
-// ══════════════════════════════════════
 // MODAL
-// ══════════════════════════════════════
 function initStarPicker(){
   selectedStars=0;
   const picker=document.getElementById('starPicker');
@@ -1583,9 +1324,7 @@ function updateQtyTotal(){
 }
 function addFromModal(){if(!currentAcc)return;addCart(currentAcc.id,parseInt(document.getElementById('qtyInput').value)||1);closeModal()}
 
-// ══════════════════════════════════════
 // CART & FAV
-// ══════════════════════════════════════
 function toggleFav(id,btn){
   if(favs.has(id)){favs.delete(id);btn.classList.remove('active');showToast('حُذف من المفضلة')}
   else{favs.add(id);btn.classList.add('active');showToast('♥ أُضيف للمفضلة')}
@@ -1604,15 +1343,12 @@ function removeFav(id){favs.delete(id);updateBadges();renderFavBody();render()}
 function updateBadges(){
   const total=cart.reduce((s,a)=>s+a.priceNew*a.qty,0);
   const totalCount=cart.reduce((s,a)=>s+a.qty,0);
-  // Desktop badges
   const cb=document.getElementById('cartBadge'),fb=document.getElementById('favBadge');
   if(cb){cb.textContent=totalCount;cb.style.display=totalCount?'flex':'none'}
   if(fb){fb.textContent=favs.size;fb.style.display=favs.size?'flex':'none'}
   const ct=document.getElementById('cartTotalTop');if(ct)ct.textContent=total.toFixed(2)+' ﷼';
-  // Mobile badges
   const mct=document.getElementById('mobileCartTotal');if(mct)mct.textContent=total.toFixed(2)+' ﷼';
   const mcb=document.getElementById('mobileCartBadge');if(mcb){mcb.textContent=totalCount;mcb.style.display=totalCount?'flex':'none'}
-  // Bottom nav
   const bnc=document.getElementById('bnCartBadge');if(bnc){bnc.textContent=totalCount;bnc.style.display=totalCount?'flex':'none'}
   const bnf=document.getElementById('bnFavBadge');if(bnf){bnf.textContent=favs.size;bnf.style.display=favs.size?'flex':'none'}
   const bnt=document.getElementById('bnCartTotal');if(bnt)bnt.textContent=total.toFixed(2)+' ﷼';
@@ -1629,9 +1365,7 @@ function closePanel(){
   document.getElementById('favPanel').classList.remove('open');
 }
 
-// ══════════════════════════════════════
 // WHATSAPP
-// ══════════════════════════════════════
 const WA_SVG=`<svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2.07 21.92a.5.5 0 0 0 .612.612l4.786-1.354A9.954 9.954 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.952 7.952 0 0 1-4.076-1.125l-.29-.173-3.006.85.863-2.98-.19-.307A7.96 7.96 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>`;
 
 function buildWhatsAppMsg(items){
@@ -1703,9 +1437,7 @@ function addAllFavs(){
   updateBadges();showToast('✓ أُضيف الكل للسلة');closePanel();
 }
 
-// ══════════════════════════════════════
 // INFO MODAL
-// ══════════════════════════════════════
 const infoContent={
   about:{title:'🏪 من نحن — متجر BEST',body:`
     <div class="info-text">متجر BEST متخصص ببيع حسابات إلكترونية مضمونة وآمنة، مع تسليم سريع وتجربة شراء مميزة.</div>
@@ -1735,9 +1467,7 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),2200);
 }
 
-// ══════════════════════════════════════
 // INIT
-// ══════════════════════════════════════
 render();
 renderUserBadge();
 updateWelcomeBar();
