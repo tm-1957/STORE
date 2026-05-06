@@ -127,6 +127,43 @@
     body.dark .mobile-menu-item{border-color:#2a2d3a;color:#ccc}
     body.dark .mobile-menu-item:hover{background:#2a2d3a}
 
+    /* CONTACT MODAL */
+    .contact-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:900;
+      align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+    .contact-modal-overlay.open{display:flex}
+    .contact-modal{background:#fff;border-radius:20px;width:100%;max-width:440px;
+      overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.25);animation:modalIn 0.25s ease}
+    body.dark .contact-modal{background:#1a1d27}
+    .contact-modal-header{padding:1.4rem 1.6rem 1rem;background:linear-gradient(135deg,#1a2a5e,#2a4a9e);
+      display:flex;align-items:center;justify-content:space-between}
+    .contact-modal-title{font-size:18px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+    .contact-modal-body{padding:1.6rem}
+    .contact-card{display:flex;align-items:center;gap:14px;padding:14px 16px;
+      border-radius:14px;margin-bottom:12px;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;width:100%;font-family:'Cairo',sans-serif;text-align:right}
+    .contact-card:last-child{margin-bottom:0}
+    .contact-card-wa{background:linear-gradient(135deg,#e8fff2,#d0f7e0);border:1.5px solid #b2eccc}
+    .contact-card-wa:hover{background:linear-gradient(135deg,#d0f7e0,#b8f0cc);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.2)}
+    body.dark .contact-card-wa{background:linear-gradient(135deg,#0d2a1a,#0f3520);border-color:#1a5c30}
+    body.dark .contact-card-wa:hover{background:linear-gradient(135deg,#0f3520,#124025)}
+    .contact-card-email{background:linear-gradient(135deg,#eef2ff,#e0e8ff);border:1.5px solid #c5d0ff}
+    .contact-card-email:hover{background:linear-gradient(135deg,#e0e8ff,#d0dcff);transform:translateY(-2px);box-shadow:0 6px 20px rgba(74,124,247,0.2)}
+    body.dark .contact-card-email{background:linear-gradient(135deg,#0d1530,#111d3f);border-color:#1e2f6e}
+    body.dark .contact-card-email:hover{background:linear-gradient(135deg,#111d3f,#142248)}
+    .contact-card-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+    .contact-card-wa .contact-card-icon{background:#25d366}
+    .contact-card-email .contact-card-icon{background:#4a7cf7}
+    .contact-card-info{flex:1}
+    .contact-card-label{font-size:11px;font-weight:600;color:#888;margin-bottom:3px}
+    body.dark .contact-card-label{color:#666}
+    .contact-card-value{font-size:14px;font-weight:700;direction:ltr;text-align:right}
+    .contact-card-wa .contact-card-value{color:#1a8a42}
+    body.dark .contact-card-wa .contact-card-value{color:#25d366}
+    .contact-card-email .contact-card-value{color:#1a2a9e}
+    body.dark .contact-card-email .contact-card-value{color:#7a9cf7}
+    .contact-card-arrow{font-size:18px;opacity:0.4;flex-shrink:0}
+    .contact-note{font-size:12px;color:#aaa;text-align:center;margin-top:14px;line-height:1.8}
+    body.dark .contact-note{color:#555}
+
     /* USER BADGE + DROPDOWN */
     .user-badge-wrap{position:relative}
     .user-badge{display:flex;align-items:center;gap:7px;background:#f0f4ff;border:1px solid #d0daff;
@@ -138,8 +175,6 @@
     .user-avatar{width:28px;height:28px;border-radius:50%;background:#1a2a5e;
       display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
     body.dark .user-avatar{background:#4a7cf7}
-
-    /* DROPDOWN */
     .user-dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:210px;
       background:#fff;border:1px solid #e5e5e5;border-radius:16px;
       box-shadow:0 10px 40px rgba(0,0,0,0.15);z-index:600;overflow:hidden;
@@ -234,7 +269,7 @@
     .toggle-sw input:checked + .toggle-slider::before{transform:translateX(-20px)}
     body.dark .toggle-slider{background:#3a3d4a}
 
-    /* TOPBAR — DESKTOP */
+    /* ─── TOPBAR ─── */
     .topbar{
       background:#fff;border-bottom:1px solid #e5e5e5;
       display:flex;align-items:center;justify-content:space-between;
@@ -244,16 +279,41 @@
     }
     .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
     .logo img{height:44px;width:44px;object-fit:contain;border-radius:8px}
+    /* ★ CHANGE 1: BEST text blue */
     .logo-text{font-size:17px;font-weight:700;color:#1a2a5e;line-height:1.2}
-    .logo-text span{color:#4a7cf7}
-    .topbar-mid{flex:1;max-width:360px;margin:0 0.5rem}
+    .logo-text .brand-highlight{color:#4a7cf7}
+
+    /* ★ CHANGE 2: More visible search bar */
+    .topbar-mid{flex:1;max-width:420px;margin:0 0.5rem}
     .search-wrap{position:relative}
-    .search-input{width:100%;background:#f5f5f5;border:1.5px solid #e5e5e5;border-radius:24px;
-      padding:8px 16px 8px 40px;font-family:'Cairo',sans-serif;font-size:13px;outline:none;
-      transition:border-color 0.2s;color:#222}
-    .search-input:focus{border-color:#4a7cf7;background:#fff}
-    .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
-      color:#aaa;font-size:15px;pointer-events:none}
+    .search-input{
+      width:100%;
+      background:#fff;
+      border:2px solid #4a7cf7;
+      border-radius:28px;
+      padding:10px 18px 10px 44px;
+      font-family:'Cairo',sans-serif;
+      font-size:14px;
+      font-weight:600;
+      outline:none;
+      color:#222;
+      transition:all 0.2s;
+      box-shadow:0 2px 12px rgba(74,124,247,0.15)
+    }
+    .search-input:focus{
+      border-color:#1a2a5e;
+      box-shadow:0 4px 18px rgba(74,124,247,0.28)
+    }
+    .search-input::placeholder{color:#9ab}
+    body.dark .search-input{
+      background:#1a1d27;
+      border-color:#4a7cf7;
+      color:#e5e5e5;
+      box-shadow:0 2px 12px rgba(74,124,247,0.1)
+    }
+    body.dark .search-input:focus{border-color:#7aaeff;box-shadow:0 4px 18px rgba(74,124,247,0.22)}
+    .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#4a7cf7;font-size:16px;pointer-events:none}
+
     .topbar-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
     .icon-btn{background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;
       padding:7px 12px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
@@ -284,7 +344,7 @@
       .topbar-row1{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 14px;gap:8px}
       .topbar-row2{display:flex;align-items:center;width:100%;padding:0 14px 10px;}
       .topbar-row2 .search-wrap{flex:1}
-      .topbar-row2 .search-input{width:100%;font-size:14px;padding:10px 16px 10px 40px;border-radius:14px}
+      .topbar-row2 .search-input{width:100%;font-size:14px;padding:10px 18px 10px 44px;border-radius:20px}
       .logo img{height:36px;width:36px}
       .logo-text{font-size:15px}
       .mobile-top-btns{display:flex;align-items:center;gap:6px}
@@ -584,8 +644,8 @@
 <!-- AUTH MODAL -->
 <div class="auth-overlay" id="authOverlay">
   <div class="auth-box">
-    <div class="auth-logo"><img src="data:image/png;base64,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" alt="BEST" style="height:56px;width:auto;object-fit:contain"></div>
-    <div class="auth-title">متجر BEST</div>
+    <div class="auth-logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCABAAEADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUCAwYBAAf/xAAvEAACAQMDAgQFBQEAAAAAAAABAgMABBEFEiExBhNBUWEiMnGBkaHBFCNC0fD/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EACURAAICAgIBBAMAAAAAAAAAAAABAgMREiFBMVFhBBMiQnH/2gAMAwEAAhEDEQA/APnVNSntZg8MjI3cg4zWjSePNftZAVv5Co6K+GH614uSwbBGD60fS2kdxhM/ID6VnKlKW7M1Rk3ox2bxl4hvV2yalKB/gQv9q5m5nluJDJNI0jHqzHJqRbWE82cRnHfpSv2W5Y9FP0qyMIx2RZGlFblp7EViG8V2yFIGQpYdfKpbWlcWsZ2gZBJIB8s0yNldXHlXw9h0qvuIvsJuYSMLncv5VT2jxVhWjuVW4iHJCE88+X5UpLa2kWWGWAcLFJkA9WByKgWdw1vIJBGsh2ld25d2D2OKmm8cA7YAMdz1PzqMp8Xsm+Qcbe2P6qlQvFBNHJdsFJHJGTj6Cq9KPFI1hdJDYWUYgZ5m3KwbDIeuaiXOmRG8UWi5IUtkHHPeiGJjUMhJZh5jHSr7eFVjBLvg9M8q0VJLgVqnJLkpzaZPbqfaIyp5kgnH/ACorO2mvbqKCL7zMqr9T0rQ3sF7a2oknTCJg7xt8LFc7cSPNKXY8k5p2mopGnUko8GgfXRaW4t7OEqgG0yFuT9KV8SBIVGcBRimRQhvfkDpuOfmKjazh3RvBVgQe3nWEopLREKot7tEGFmWQBTgjORXlvbNcqzKMBDzXRbdFWQLknPFPDQQvHO3b1q6DqUVEuqVqPJFZ2jXiurSILJCMqTzxT2HSZ7a2a8MR9pjx14+laBPCtnDHDGc7m8s9abQ2UcURiCfJOaWeVJeyGdUfZXK7dpJgFAMEnrxXF3cD/AJG5bGUAJ+dOr62ki35ABHSgd1bBLlwvTPX61nCTi7KKtSjwWDSg3SShLfD4I64HHFINtFLMiGVgqnGB5n0q1cxMXBUHB5wKjw2+X3EHb2pklS2KxqnLiXxZ3aDyEbcDknnFaiwMcW4KGBUDPb1qEIiYCxU5HaqsMOW9skj5CrNPqJKzOVdW2RPJJQAAABI4+tO7LT3SIJ3C9gR0qJY2QMhkOWHQelXeYjAqy9iSgkgDHzrGfcNy0CvXlxAGtDGFJGCMnr+6JE7AqFI9vt+v3XbW2eW3XRWRDwAAKg27xhQJBhiMsO9VV0VJpSSNH9M3cJxKhGBxyRTMlHdIXe5i1fS7nT7hobiMq6ngZz+hxUO1hkDlpBhM8H/ald7qk93KZJXLHt0/RqrbmXzNacVFWiuSTe7LNjaq7KH5CthT/AMpn9x+VcVqFtJPq97JGOHuZG/mxrqbBGSCNGxlVAOO+BWW1q2S21i8jQYHtHH+JJ/muS1JOU2VW5OLSY7bXLWdoXkjkAJRIz7Y8+cVwbvPRjXbNaQ+5F2GR9KKW8KFlUKM96sjBxMqlFR4Q0EzLg81IfEg61b9mH/oD5CjtxuyfTHUiuf0nzq2EJJH/9k=" alt="BEST" style="height:56px;width:auto;object-fit:contain"></div>
+    <div class="auth-title">متجر <span style="color:#4a7cf7">BEST</span></div>
     <div class="auth-tabs" id="authTabs">
       <button class="auth-tab active" onclick="switchAuthMode('login')">تسجيل الدخول</button>
       <button class="auth-tab" onclick="switchAuthMode('register')">إنشاء حساب</button>
@@ -705,6 +765,39 @@
   </div>
 </div>
 
+<!-- ★ CONTACT US MODAL -->
+<div class="contact-modal-overlay" id="contactModalOverlay" onclick="closeContactModalOutside(event)">
+  <div class="contact-modal">
+    <div class="contact-modal-header">
+      <div class="contact-modal-title">📞 تواصل معنا</div>
+      <button onclick="closeContactModal()" style="background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;color:#fff;display:flex;align-items:center;justify-content:center">✕</button>
+    </div>
+    <div class="contact-modal-body">
+      <a class="contact-card contact-card-wa" href="https://wa.me/966535427779" target="_blank" rel="noopener">
+        <div class="contact-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.658 1.438 5.168L2.07 21.92a.5.5 0 0 0 .612.612l4.786-1.354A9.954 9.954 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.952 7.952 0 0 1-4.076-1.125l-.29-.173-3.006.85.863-2.98-.19-.307A7.96 7.96 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        </div>
+        <div class="contact-card-info">
+          <div class="contact-card-label">واتساب</div>
+          <div class="contact-card-value">0535427779</div>
+        </div>
+        <div class="contact-card-arrow">←</div>
+      </a>
+      <a class="contact-card contact-card-email" href="mailto:beststore159@gmail.com">
+        <div class="contact-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-card-info">
+          <div class="contact-card-label">البريد الإلكتروني</div>
+          <div class="contact-card-value">beststore159@gmail.com</div>
+        </div>
+        <div class="contact-card-arrow">←</div>
+      </a>
+      <div class="contact-note">نرد على جميع الرسائل خلال 24 ساعة 🕐<br>يسعدنا خدمتك دائماً 💙</div>
+    </div>
+  </div>
+</div>
+
 <!-- TOPBAR -->
 <div class="topbar" id="mainTopbar">
 
@@ -712,7 +805,7 @@
   <div class="topbar-row1 mobile-only">
     <div class="logo">
       <img src="data:image/png;base64,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" alt="BEST" style="height:36px;width:36px;object-fit:contain;border-radius:8px">
-      <div class="logo-text">متجر BEST</div>
+      <div class="logo-text">متجر <span class="brand-highlight">BEST</span></div>
     </div>
     <div class="mobile-top-btns">
       <button class="dark-toggle" id="darkToggleMobile" onclick="toggleDark()" style="padding:8px 10px;font-size:16px">🌙</button>
@@ -731,14 +824,14 @@
   <div class="topbar-row2 mobile-only">
     <div class="search-wrap" style="flex:1">
       <span class="search-icon">🔍</span>
-      <input class="search-input" id="searchInputMobile" placeholder="ابحث بالسنة مثلاً: 2009" oninput="doSearch()">
+      <input class="search-input" id="searchInputMobile" placeholder="🔎 ابحث بالسنة مثلاً: 2009" oninput="doSearch()">
     </div>
   </div>
 
   <!-- ديسكتوب -->
   <div class="logo desktop-only">
     <img src="data:image/png;base64,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" alt="BEST" style="height:44px;width:44px;object-fit:contain;border-radius:8px">
-    <div class="logo-text">متجر BEST</div>
+    <div class="logo-text">متجر <span class="brand-highlight">BEST</span></div>
   </div>
   <div class="topbar-mid desktop-only">
     <div class="search-wrap">
@@ -749,6 +842,7 @@
   <div class="topbar-actions desktop-only">
     <button class="topbar-nav-btn" onclick="openInfoModal('about')">من نحن</button>
     <button class="topbar-nav-btn" onclick="openInfoModal('desc')">وصف المتجر</button>
+    <button class="topbar-nav-btn" onclick="openContactModal()">📞 تواصل معنا</button>
     <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
     <div class="user-badge-wrap" id="userBadgeWrap"></div>
     <button class="icon-btn" onclick="openPanel('fav')">♥ المفضلة <span class="badge" id="favBadge" style="display:none">0</span></button>
@@ -770,6 +864,9 @@
     </div>
     <div class="mobile-menu-item" onclick="openInfoModal('desc');closeMobileMenu()">
       <span class="mobile-menu-item-icon">📋</span><span>وصف المتجر</span>
+    </div>
+    <div class="mobile-menu-item" onclick="openContactModal();closeMobileMenu()">
+      <span class="mobile-menu-item-icon">📞</span><span>تواصل معنا</span>
     </div>
     <div class="mobile-menu-divider"></div>
     <div id="mobileMenuActions"></div>
@@ -1002,6 +1099,11 @@ function doForgot(){
   btn.disabled=true;btn.innerHTML='جاري الإرسال... <span class="auth-spinner"></span>';
   setTimeout(()=>{suc.textContent='✅ إذا كان الإيميل مسجلاً، سيصلك الرابط قريباً';btn.disabled=false;btn.innerHTML='إرسال رابط الاستعادة';},900);
 }
+
+// CONTACT MODAL
+function openContactModal(){document.getElementById('contactModalOverlay').classList.add('open')}
+function closeContactModal(){document.getElementById('contactModalOverlay').classList.remove('open')}
+function closeContactModalOutside(e){if(e.target===document.getElementById('contactModalOverlay'))closeContactModal()}
 
 // DROPDOWN
 let dropdownOpen=false;
