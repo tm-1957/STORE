@@ -20,16 +20,31 @@
     .auth-title{font-size:20px;font-weight:700;color:#1a2a5e;margin-bottom:6px}
     body.dark .auth-title{color:#c9d4f0}
     .auth-sub{font-size:13px;color:#888;margin-bottom:22px;line-height:1.7}
+    .auth-tabs{display:flex;background:#f5f5f5;border-radius:12px;padding:4px;margin-bottom:20px;gap:4px}
+    body.dark .auth-tabs{background:#2a2d3a}
+    .auth-tab{flex:1;padding:8px;border:none;border-radius:9px;font-family:'Cairo',sans-serif;
+      font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:#888;transition:all 0.2s}
+    .auth-tab.active{background:#fff;color:#1a2a5e;box-shadow:0 1px 4px rgba(0,0,0,0.12)}
+    body.dark .auth-tab.active{background:#1a1d27;color:#c9d4f0}
     .auth-step{display:none}
     .auth-step.active{display:block}
-    .auth-input-wrap{position:relative;margin-bottom:14px}
+    .auth-input-wrap{position:relative;margin-bottom:14px;text-align:right}
+    .auth-input-label{font-size:12px;font-weight:600;color:#666;margin-bottom:5px;display:block}
+    body.dark .auth-input-label{color:#999}
     .auth-input{width:100%;background:#f5f5f5;border:1.5px solid #e5e5e5;border-radius:12px;
       padding:12px 16px;font-family:'Cairo',sans-serif;font-size:15px;outline:none;
-      transition:border-color 0.2s;color:#222;text-align:center;direction:ltr;letter-spacing:2px}
+      transition:border-color 0.2s;color:#222;text-align:right;direction:rtl}
     .auth-input:focus{border-color:#4a7cf7;background:#fff}
     body.dark .auth-input{background:#2a2d3a;border-color:#3a3d4a;color:#e5e5e5}
     body.dark .auth-input:focus{background:#1a1d27;border-color:#4a7cf7}
-    .auth-input.name-input{letter-spacing:0;text-align:right;direction:rtl}
+    .auth-input.ltr{direction:ltr;text-align:left}
+    .auth-input-icon-wrap{position:relative}
+    .auth-input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+      font-size:16px;pointer-events:none;opacity:0.5}
+    .auth-input-icon-wrap .auth-input{padding-left:40px}
+    .pass-toggle{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+      background:none;border:none;cursor:pointer;font-size:16px;padding:0;opacity:0.5;transition:opacity 0.2s}
+    .pass-toggle:hover{opacity:1}
     .auth-btn{width:100%;background:#1a2a5e;color:#fff;border:none;border-radius:12px;
       padding:13px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
       cursor:pointer;transition:background 0.2s;margin-bottom:10px}
@@ -39,43 +54,21 @@
     .auth-btn.secondary:hover{background:#eee}
     body.dark .auth-btn.secondary{background:#2a2d3a;color:#ccc;border-color:#3a3d4a}
     .auth-note{font-size:12px;color:#aaa;margin-top:8px;line-height:1.7}
-    .auth-error{font-size:12px;color:#e74c3c;margin-top:6px;min-height:18px}
-    .otp-inputs{display:flex;gap:8px;justify-content:center;margin-bottom:14px;direction:ltr}
-    .otp-digit{width:48px;height:52px;border:1.5px solid #e5e5e5;border-radius:10px;
-      background:#f5f5f5;font-size:22px;font-weight:700;text-align:center;outline:none;
-      font-family:'Cairo',sans-serif;color:#1a2a5e;transition:border-color 0.2s}
-    .otp-digit:focus{border-color:#4a7cf7;background:#fff}
-    body.dark .otp-digit{background:#2a2d3a;border-color:#3a3d4a;color:#c9d4f0}
-    body.dark .otp-digit:focus{background:#1a1d27;border-color:#4a7cf7}
-    .resend-link{font-size:12px;color:#4a7cf7;cursor:pointer;text-decoration:underline}
-    .resend-link.disabled{color:#aaa;pointer-events:none;text-decoration:none}
-    .countdown{font-size:12px;color:#aaa}
-    #recaptcha-container{margin-bottom:12px}
-    /* COUNTRY SELECTOR */
-    .country-row{display:flex;gap:8px;margin-bottom:14px;direction:ltr}
-    .country-select{background:#f5f5f5;border:1.5px solid #e5e5e5;border-radius:12px;
-      padding:11px 10px;font-family:'Cairo',sans-serif;font-size:13px;outline:none;
-      color:#222;cursor:pointer;min-width:130px;transition:border-color 0.2s}
-    .country-select:focus{border-color:#4a7cf7;background:#fff}
-    body.dark .country-select{background:#2a2d3a;border-color:#3a3d4a;color:#e5e5e5}
-    body.dark .country-select:focus{background:#1a1d27;border-color:#4a7cf7}
-    .phone-input-only{flex:1;background:#f5f5f5;border:1.5px solid #e5e5e5;border-radius:12px;
-      padding:12px 14px;font-family:'Cairo',sans-serif;font-size:15px;outline:none;
-      transition:border-color 0.2s;color:#222;letter-spacing:1px;direction:ltr}
-    .phone-input-only:focus{border-color:#4a7cf7;background:#fff}
-    body.dark .phone-input-only{background:#2a2d3a;border-color:#3a3d4a;color:#e5e5e5}
-    body.dark .phone-input-only:focus{background:#1a1d27;border-color:#4a7cf7}
-    /* DIVIDER */
-    .auth-divider{display:flex;align-items:center;gap:10px;margin:14px 0;color:#bbb;font-size:12px}
+    .auth-error{font-size:12px;color:#e74c3c;margin-top:6px;min-height:18px;text-align:right}
+    .auth-success{font-size:12px;color:#27ae60;margin-top:6px;min-height:18px;text-align:right}
+    .auth-divider{display:flex;align-items:center;gap:10px;margin:10px 0;color:#bbb;font-size:12px}
     .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:#e5e5e5}
     body.dark .auth-divider::before,body.dark .auth-divider::after{background:#2a2d3a}
-    /* GUEST BTN */
-    .guest-btn{width:100%;background:transparent;border:1.5px dashed #bbb;border-radius:12px;
-      padding:12px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:600;
-      color:#888;cursor:pointer;transition:all 0.2s;margin-bottom:6px}
-    .guest-btn:hover{border-color:#4a7cf7;color:#4a7cf7;background:#f0f4ff}
-    body.dark .guest-btn{border-color:#3a3d4a;color:#777}
-    body.dark .guest-btn:hover{border-color:#4a7cf7;color:#7a9cf7;background:#1a2040}
+    .auth-switch-link{font-size:13px;color:#4a7cf7;cursor:pointer;text-decoration:underline}
+    .auth-strength{height:4px;border-radius:2px;margin-top:6px;margin-bottom:8px;background:#eee;overflow:hidden}
+    .auth-strength-bar{height:100%;border-radius:2px;transition:width 0.3s,background 0.3s;width:0}
+    .forgot-link{font-size:12px;color:#4a7cf7;cursor:pointer;text-decoration:underline;display:inline-block;margin-bottom:12px;text-align:left;width:100%}
+
+    /* SPINNER */
+    .auth-spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.4);
+      border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-left:6px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
     /* ORDER SUCCESS MODAL */
     .order-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:800;
       align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(3px)}
@@ -83,35 +76,6 @@
     .order-modal{background:#fff;border-radius:20px;width:100%;max-width:420px;
       padding:2rem 1.8rem;text-align:center;animation:modalIn 0.3s ease;box-shadow:0 20px 60px rgba(0,0,0,0.25)}
     body.dark .order-modal{background:#1a1d27}
-    .order-success-icon{font-size:56px;margin-bottom:10px;animation:popIn 0.5s cubic-bezier(.4,2,.6,1)}
-    @keyframes popIn{from{transform:scale(0.4);opacity:0}to{transform:scale(1);opacity:1}}
-    .order-modal-title{font-size:22px;font-weight:700;color:#1a2a5e;margin-bottom:6px}
-    body.dark .order-modal-title{color:#c9d4f0}
-    .order-modal-sub{font-size:13px;color:#888;margin-bottom:18px;line-height:1.7}
-    .order-summary-box{background:#f8f9ff;border:1px solid #e8edf8;border-radius:14px;
-      padding:14px 16px;margin-bottom:18px;text-align:right}
-    body.dark .order-summary-box{background:#131620;border-color:#2a2d3a}
-    .order-row{display:flex;justify-content:space-between;align-items:center;
-      padding:5px 0;font-size:13px;border-bottom:1px solid #eef0f8}
-    body.dark .order-row{border-color:#1f2230}
-    .order-row:last-child{border-bottom:none;font-weight:700;font-size:14px;padding-top:10px;margin-top:4px}
-    .order-row-label{color:#888}
-    body.dark .order-row-label{color:#666}
-    .order-row-val{color:#222;font-weight:600}
-    body.dark .order-row-val{color:#e5e5e5}
-    .order-row:last-child .order-row-val{color:#c0392b}
-    .wa-confirm-btn{display:flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;background:#25d366;color:#fff;border:none;border-radius:14px;
-      padding:15px;font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;
-      cursor:pointer;transition:all 0.2s;text-decoration:none;margin-bottom:10px;
-      box-shadow:0 4px 15px rgba(37,211,102,0.35)}
-    .wa-confirm-btn:hover{background:#1ebe5d;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,0.45)}
-    .order-close-btn{background:none;border:none;color:#aaa;font-size:13px;
-      cursor:pointer;font-family:'Cairo',sans-serif;padding:6px}
-    .order-close-btn:hover{color:#555}
-    .order-id-badge{display:inline-block;background:#1a2a5e;color:#fff;border-radius:8px;
-      padding:3px 10px;font-size:11px;font-weight:700;margin-bottom:14px;letter-spacing:1px}
-    body.dark .order-id-badge{background:#4a7cf7}
 
     /* DARK MODE */
     body{background:#f5f5f5;font-family:'Cairo',sans-serif;direction:rtl;color:#222;min-height:100vh;transition:background 0.3s,color 0.3s}
@@ -405,17 +369,6 @@
     .toast.show{transform:translateX(-50%) translateY(0)}
 
     .no-stock{font-size:11px;color:#e74c3c;font-weight:600;margin-top:4px}
-
-    /* SPINNER */
-    .auth-spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,0.4);
-      border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-left:6px}
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    /* WELCOME BAR */
-    .welcome-bar{background:linear-gradient(90deg,#1a2a5e,#2a4a9e);color:#fff;
-      padding:8px 1.5rem;font-size:13px;display:flex;align-items:center;gap:8px}
-    .welcome-bar span{opacity:0.85}
-    .welcome-bar strong{font-weight:700}
   </style>
 </head>
 <body>
@@ -426,55 +379,89 @@
     <div class="auth-logo">🏪</div>
     <div class="auth-title">متجر BEST</div>
 
-    <!-- STEP 1: PHONE -->
-    <div class="auth-step active" id="step-phone">
-      <div class="auth-sub">أدخل رقم جوالك للدخول أو التسجيل</div>
-      <div class="auth-input-wrap" style="position:relative">
-        <span class="phone-prefix">🇸🇦 +966</span>
-        <input class="auth-input" id="phoneInput" type="tel" placeholder="5XXXXXXXX"
-          maxlength="9" style="padding-right:80px" oninput="this.value=this.value.replace(/\D/g,'')">
-      </div>
-      <div id="recaptcha-container"></div>
-      <div class="auth-error" id="phoneError"></div>
-      <button class="auth-btn" id="sendOtpBtn" onclick="sendOTP()">إرسال رمز التحقق</button>
-      <div class="auth-note">سيتم إرسال رمز مكون من 6 أرقام إلى جوالك</div>
+    <!-- TABS: تسجيل الدخول / إنشاء حساب -->
+    <div class="auth-tabs" id="authTabs">
+      <button class="auth-tab active" onclick="switchAuthMode('login')">تسجيل الدخول</button>
+      <button class="auth-tab" onclick="switchAuthMode('register')">إنشاء حساب</button>
     </div>
 
-    <!-- STEP 2: OTP -->
-    <div class="auth-step" id="step-otp">
-      <div class="auth-sub">أدخل الرمز المرسل إلى<br><strong id="otpSentTo"></strong></div>
-      <div class="otp-inputs" id="otpInputs">
-        <input class="otp-digit" maxlength="1" type="tel">
-        <input class="otp-digit" maxlength="1" type="tel">
-        <input class="otp-digit" maxlength="1" type="tel">
-        <input class="otp-digit" maxlength="1" type="tel">
-        <input class="otp-digit" maxlength="1" type="tel">
-        <input class="otp-digit" maxlength="1" type="tel">
+    <!-- LOGIN STEP -->
+    <div class="auth-step active" id="step-login">
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">الإيميل أو اسم المستخدم</label>
+        <input class="auth-input ltr" id="loginIdentifier" type="text" placeholder="example@email.com" autocomplete="username">
       </div>
-      <div class="auth-error" id="otpError"></div>
-      <button class="auth-btn" id="verifyOtpBtn" onclick="verifyOTP()">تحقق</button>
-      <div style="margin-top:10px">
-        <span class="countdown" id="countdownText"></span>
-        <span class="resend-link disabled" id="resendLink" onclick="resendOTP()">إعادة الإرسال</span>
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">كلمة المرور</label>
+        <div class="auth-input-icon-wrap" style="position:relative">
+          <input class="auth-input ltr" id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password">
+          <button class="pass-toggle" type="button" onclick="togglePass('loginPassword',this)">👁️</button>
+        </div>
       </div>
-      <button class="auth-btn secondary" style="margin-top:10px" onclick="backToPhone()">← تغيير الرقم</button>
+      <div style="text-align:left;margin-bottom:10px">
+        <span class="forgot-link" onclick="showForgotStep()">نسيت كلمة المرور؟</span>
+      </div>
+      <div class="auth-error" id="loginError"></div>
+      <button class="auth-btn" id="loginBtn" onclick="doLogin()">دخول →</button>
+      <div class="auth-note">ليس لديك حساب؟ <span class="auth-switch-link" onclick="switchAuthMode('register')">سجّل الآن</span></div>
+      <div class="auth-divider">أو</div>
+      <button class="auth-btn secondary" onclick="continueAsGuest()">👤 تصفح كضيف</button>
     </div>
 
-    <!-- STEP 3: NAME -->
-    <div class="auth-step" id="step-name">
-      <div class="auth-sub">✅ تم التحقق بنجاح!<br>أدخل اسمك لإكمال التسجيل</div>
-      <input class="auth-input name-input" id="nameInput" type="text"
-        placeholder="اسمك الكريم" maxlength="30">
-      <div class="auth-error" id="nameError"></div>
-      <button class="auth-btn" onclick="saveName()">دخول إلى المتجر 🚀</button>
+    <!-- REGISTER STEP -->
+    <div class="auth-step" id="step-register">
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">الاسم الكامل</label>
+        <input class="auth-input" id="regName" type="text" placeholder="اسمك الكريم" maxlength="30" autocomplete="name">
+      </div>
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">اسم المستخدم</label>
+        <input class="auth-input ltr" id="regUsername" type="text" placeholder="best_user123" maxlength="20" autocomplete="username" oninput="this.value=this.value.replace(/\s/g,'')">
+      </div>
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">الإيميل</label>
+        <input class="auth-input ltr" id="regEmail" type="email" placeholder="example@email.com" autocomplete="email">
+      </div>
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">كلمة المرور</label>
+        <div style="position:relative">
+          <input class="auth-input ltr" id="regPassword" type="password" placeholder="••••••••" maxlength="40" autocomplete="new-password" oninput="checkStrength()">
+          <button class="pass-toggle" type="button" onclick="togglePass('regPassword',this)">👁️</button>
+        </div>
+        <div class="auth-strength"><div class="auth-strength-bar" id="strengthBar"></div></div>
+      </div>
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">تأكيد كلمة المرور</label>
+        <div style="position:relative">
+          <input class="auth-input ltr" id="regPassword2" type="password" placeholder="••••••••" maxlength="40" autocomplete="new-password">
+          <button class="pass-toggle" type="button" onclick="togglePass('regPassword2',this)">👁️</button>
+        </div>
+      </div>
+      <div class="auth-error" id="registerError"></div>
+      <button class="auth-btn" id="registerBtn" onclick="doRegister()">إنشاء الحساب 🚀</button>
+      <div class="auth-note">لديك حساب بالفعل؟ <span class="auth-switch-link" onclick="switchAuthMode('login')">سجّل الدخول</span></div>
     </div>
+
+    <!-- FORGOT PASSWORD STEP -->
+    <div class="auth-step" id="step-forgot">
+      <div class="auth-sub">أدخل إيميلك وسنرسل لك رابط استعادة كلمة المرور</div>
+      <div class="auth-input-wrap">
+        <label class="auth-input-label">الإيميل</label>
+        <input class="auth-input ltr" id="forgotEmail" type="email" placeholder="example@email.com">
+      </div>
+      <div class="auth-error" id="forgotError"></div>
+      <div class="auth-success" id="forgotSuccess"></div>
+      <button class="auth-btn" id="forgotBtn" onclick="doForgot()">إرسال رابط الاستعادة</button>
+      <button class="auth-btn secondary" style="margin-top:6px" onclick="switchAuthMode('login')">← العودة لتسجيل الدخول</button>
+    </div>
+
   </div>
 </div>
 
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">
-    <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//aAAwDAQACAAMAAAAh8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888+888888888888888888888888888888888888888888888888888888888888+nd8818888888888888888888888888888888888888888888888888888888884MRBF9L98888888888888888888888888888888888888888888888888888888869BFd9tV888888888888888888888888888888888888888888888888888hhZ889959999W885JU888888888888888888888888888888888888888888888rbH3/8tiFxhBY/8rjrfb88888888888888888888888888888888888888888888IHn/c88tgJNY3884DTPk88888888888888888888888888888888888888888888smXg1888/WH8888sGH4d888888888888888888888888888888888888888888888AwZ887/aZxS//APPNEFfPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPE4w1bvGgQQQQRYsjqw8w9PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNnzw1T8QQQQQQQQdS5wwwcvPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPOKP41/BAQQQQQAQQUZOiww5tPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPKDaw1ctAQZSQQAAQQbdvwx+dPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPLBjwxQEyQXZSQABQRRQvy0/nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPLPPPPPgUVfYUSEYQcLDDHHPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPjQ8840ww02XPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPONfPPJMfL2nOOs/PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPOO89/PPPwPPPDXl6C/JIRfPNO9/8ATzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzx9GIqpaq76u4LsXzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyhbzzzxv3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzUEEFWHfzysawgwzXzzzkwxxxbzypwwQ4g3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzxup/wD/ALWvPDUz73z/ADzx5kc8+9zzyw8tiU93zzzzzzzzzzzzzzzzzzzzzzzzzzzzzyuD77rwbzzWUYIJLTzxzLzzTDzzzzyjz/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyvrMOf3zzzskUk09zzyxrHHH7XzzzyjzfzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzytHzzwjTzx1zzzzzzzzzzzzz8Bzzzyjz/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz1+4J693zyk2xHXlXzzhz023l7zzzyzxfzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzy3zzzx3zzzzz3/31zzzzz399zzzzzzxzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz/2gAMAwEAAgADAAAAEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMONMONONMMOPMMMMMMNOMMONMMMNNOOPPPPONMPMMMMMPNOMOMMMNMNMMMPPPOMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJKUo5yQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA7vugEywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYvupCBIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEHETAAE4BgkMBIwACHCQAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAABeBNKgA/+jnvpAgBSKDLgAAA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" alt="متجر BEST">
+    <img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//aAAwDAQACAAMAAAAh8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888+888888888888888888888888888888888888888888888888888888888888+nd8818888888888888888888888888888888888888888888888888888888884MRBF9L98888888888888888888888888888888888888888888888888888888869BFd9tV888888888888888888888888888888888888888888888888888hhZ889959999W885JU888888888888888888888888888888888888888888888rbH3/8tiFxhBY/8rjrfb88888888888888888888888888888888888888888888IHn/c88tgJNY3884DTPk88888888888888888888888888888888888888888888smXg1888/WH8888sGH4d888888888888888888888888888888888888888888888AwZ887/aZxS//APPNEFfPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPE4w1bvGgQQQQRYsjqw8w9PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNnzw1T8QQQQQQQQdS5wwwcvPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPOKP41/BAQQQQQAQQUZOiww5tPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPKDaw1ctAQZSQQAAQQbdvwx+dPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPLBjwxQEyQXZSQABQRRQvy0/nPPPPPPPPPPP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" alt="متجر BEST">
     <div class="logo-text">متجر <span>BEST</span></div>
   </div>
   <div class="topbar-mid">
@@ -487,7 +474,6 @@
     <button class="topbar-nav-btn" onclick="openInfoModal('about')">من نحن</button>
     <button class="topbar-nav-btn" onclick="openInfoModal('desc')">وصف المتجر</button>
     <button class="dark-toggle" id="darkToggle" onclick="toggleDark()" title="الوضع الليلي">🌙</button>
-    <!-- USER BADGE / LOGIN BTN -->
     <div id="userBadgeWrap"></div>
     <button class="icon-btn" onclick="openPanel('fav')">
       ♥ المفضلة <span class="badge" id="favBadge" style="display:none">0</span>
@@ -552,7 +538,6 @@
       <div class="no-stock">⚠️ الحد الأقصى للكمية: 5 حسابات لكل منتج</div>
       <button class="modal-add-btn" onclick="addFromModal()">🛒 إضافة للسلة</button>
 
-      <!-- REVIEW FORM -->
       <div class="rating-form">
         <div class="rating-form-title">✍️ أضف تقييمك</div>
         <input type="text" id="reviewName" placeholder="اسمك" maxlength="40">
@@ -605,236 +590,229 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Firebase SDKs -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<script>
+// ==============================
+// LOCAL AUTH SYSTEM (Email / Username + Password)
+// ==============================
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD40jW4ONF_CmnK5vypdc3TRWoKYTwpEPk",
-  authDomain: "storebest-ce7c5.firebaseapp.com",
-  projectId: "storebest-ce7c5",
-  storageBucket: "storebest-ce7c5.firebasestorage.app",
-  messagingSenderId: "204948520121",
-  appId: "1:204948520121:web:3d5a486004c6ee34186f68",
-  measurementId: "G-YNG6BM3CB1"
-};
+// Simple local "database" stored in localStorage
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem('bestUsers') || '{}'); } catch(e){ return {}; }
+}
+function saveUsers(users) {
+  localStorage.setItem('bestUsers', JSON.stringify(users));
+}
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-auth.languageCode = 'ar';
-
-let confirmationResult = null;
-let countdownTimer = null;
-
-// Expose to global scope
-window._fbAuth = auth;
-window._fbDb = db;
-window._fbDoc = doc;
-window._fbSetDoc = setDoc;
-window._fbGetDoc = getDoc;
-window._fbSignOut = signOut;
-
-// Setup recaptcha
-window.setupRecaptcha = function() {
-  if (window.recaptchaVerifier) {
-    try { window.recaptchaVerifier.clear(); } catch(e){}
+function hashSimple(str) {
+  // Simple non-cryptographic hash for demo purposes
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
   }
-  window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-    size: 'invisible',
-    callback: () => {}
-  });
-};
+  return hash.toString(36);
+}
 
-window.sendOTP = async function() {
-  const raw = document.getElementById('phoneInput').value.trim();
-  const err = document.getElementById('phoneError');
+function switchAuthMode(mode) {
+  const tabs = document.querySelectorAll('.auth-tab');
+  tabs[0].classList.toggle('active', mode === 'login');
+  tabs[1].classList.toggle('active', mode === 'register');
+  document.querySelectorAll('.auth-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + mode).classList.add('active');
+  document.getElementById('loginError').textContent = '';
+  document.getElementById('registerError').textContent = '';
+}
+
+function showForgotStep() {
+  document.querySelectorAll('.auth-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('authTabs').style.display = 'none';
+  document.getElementById('step-forgot').classList.add('active');
+}
+
+function togglePass(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁️'; }
+}
+
+function checkStrength() {
+  const val = document.getElementById('regPassword').value;
+  const bar = document.getElementById('strengthBar');
+  let score = 0;
+  if (val.length >= 6) score++;
+  if (val.length >= 10) score++;
+  if (/[A-Z]/.test(val)) score++;
+  if (/[0-9]/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+  const colors = ['#e74c3c','#e67e22','#f1c40f','#2ecc71','#27ae60'];
+  const widths = ['20%','40%','60%','80%','100%'];
+  bar.style.width = val.length ? widths[score-1]||'10%' : '0';
+  bar.style.background = val.length ? colors[score-1]||'#eee' : 'transparent';
+}
+
+function doLogin() {
+  const ident = document.getElementById('loginIdentifier').value.trim().toLowerCase();
+  const pass = document.getElementById('loginPassword').value;
+  const err = document.getElementById('loginError');
   err.textContent = '';
-  if (!/^5[0-9]{8}$/.test(raw)) {
-    err.textContent = 'أدخل رقم سعودي صحيح (يبدأ بـ 5 ويتكون من 9 أرقام)';
-    return;
-  }
-  const phone = '+966' + raw;
-  const btn = document.getElementById('sendOtpBtn');
-  btn.disabled = true;
-  btn.innerHTML = 'جاري الإرسال... <span class="auth-spinner"></span>';
-  try {
-    setupRecaptcha();
-    confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
-    document.getElementById('otpSentTo').textContent = phone;
-    showStep('otp');
-    startCountdown(60);
-    showToast('✓ تم إرسال الرمز');
-  } catch(e) {
-    err.textContent = 'خطأ: ' + (e.message || 'تعذر الإرسال، حاول مرة أخرى');
-    btn.disabled = false;
-    btn.innerHTML = 'إرسال رمز التحقق';
-    if(window.recaptchaVerifier) { try{window.recaptchaVerifier.clear();}catch(x){} window.recaptchaVerifier=null; }
-  }
-};
 
-window.verifyOTP = async function() {
-  const digits = [...document.querySelectorAll('.otp-digit')].map(i=>i.value).join('');
-  const err = document.getElementById('otpError');
-  err.textContent = '';
-  if (digits.length !== 6) { err.textContent = 'أدخل الرمز المكون من 6 أرقام'; return; }
-  const btn = document.getElementById('verifyOtpBtn');
+  if (!ident) { err.textContent = 'أدخل الإيميل أو اسم المستخدم'; return; }
+  if (!pass) { err.textContent = 'أدخل كلمة المرور'; return; }
+
+  const btn = document.getElementById('loginBtn');
   btn.disabled = true;
   btn.innerHTML = 'جاري التحقق... <span class="auth-spinner"></span>';
-  try {
-    const result = await confirmationResult.confirm(digits);
-    const user = result.user;
-    // Check if user already has a saved name in Firestore
-    const userRef = doc(db, 'users', user.uid);
-    const snap = await getDoc(userRef);
-    if (snap.exists() && snap.data().name) {
-      // Already registered
-      window.currentUser = { uid: user.uid, phone: user.phoneNumber, name: snap.data().name, verified: true };
-      onLoginSuccess();
-    } else {
-      // New user — ask for name
-      window._pendingUid = user.uid;
-      window._pendingPhone = user.phoneNumber;
-      showStep('name');
-    }
-  } catch(e) {
-    err.textContent = 'الرمز غير صحيح أو انتهت صلاحيته';
-    btn.disabled = false;
-    btn.innerHTML = 'تحقق';
-  }
-};
 
-window.saveName = async function() {
-  const name = document.getElementById('nameInput').value.trim();
-  const err = document.getElementById('nameError');
+  setTimeout(() => {
+    const users = getUsers();
+    // Find by email or username
+    const user = Object.values(users).find(u =>
+      u.email.toLowerCase() === ident || u.username.toLowerCase() === ident
+    );
+
+    if (!user || user.passwordHash !== hashSimple(pass)) {
+      err.textContent = 'الإيميل/اسم المستخدم أو كلمة المرور غير صحيحة';
+      btn.disabled = false;
+      btn.innerHTML = 'دخول →';
+      return;
+    }
+
+    window.currentUser = { uid: user.uid, name: user.name, email: user.email, username: user.username };
+    localStorage.setItem('bestUser', JSON.stringify(window.currentUser));
+    document.getElementById('authOverlay').classList.remove('open');
+    renderUserBadge();
+    updateWelcomeBar();
+    showToast('✓ مرحباً ' + user.name + '!');
+    btn.disabled = false;
+    btn.innerHTML = 'دخول →';
+  }, 700);
+}
+
+function doRegister() {
+  const name = document.getElementById('regName').value.trim();
+  const username = document.getElementById('regUsername').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('regPassword').value;
+  const pass2 = document.getElementById('regPassword2').value;
+  const err = document.getElementById('registerError');
   err.textContent = '';
+
   if (!name || name.length < 2) { err.textContent = 'أدخل اسمك (حرفان على الأقل)'; return; }
-  const btn = document.querySelector('#step-name .auth-btn');
+  if (!username || username.length < 3) { err.textContent = 'اسم المستخدم يجب أن يكون 3 أحرف على الأقل'; return; }
+  if (!/^[a-zA-Z0-9_]+$/.test(username)) { err.textContent = 'اسم المستخدم: أحرف إنجليزية وأرقام و _ فقط'; return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'أدخل إيميل صحيح'; return; }
+  if (!pass || pass.length < 6) { err.textContent = 'كلمة المرور يجب أن تكون 6 أحرف على الأقل'; return; }
+  if (pass !== pass2) { err.textContent = 'كلمتا المرور غير متطابقتين'; return; }
+
+  const btn = document.getElementById('registerBtn');
   btn.disabled = true;
-  btn.innerHTML = 'جاري الحفظ... <span class="auth-spinner"></span>';
-  try {
-    const userRef = doc(db, 'users', window._pendingUid);
-    await setDoc(userRef, { phone: window._pendingPhone, name: name, verified: true, createdAt: new Date().toISOString() });
-    window.currentUser = { uid: window._pendingUid, phone: window._pendingPhone, name: name, verified: true };
-    onLoginSuccess();
-  } catch(e) {
-    err.textContent = 'خطأ في الحفظ، حاول مرة أخرى';
-    btn.disabled = false;
-    btn.innerHTML = 'دخول إلى المتجر 🚀';
-  }
-};
+  btn.innerHTML = 'جاري الإنشاء... <span class="auth-spinner"></span>';
 
-window.logoutUser = async function() {
-  await signOut(auth);
-  window.currentUser = null;
-  localStorage.removeItem('bestUser');
-  renderUserBadge();
-  document.getElementById('authOverlay').classList.add('open');
-  showStep('phone');
-  document.getElementById('sendOtpBtn').disabled = false;
-  document.getElementById('sendOtpBtn').innerHTML = 'إرسال رمز التحقق';
-  document.getElementById('phoneInput').value = '';
-};
-
-window.resendOTP = async function() {
-  const raw = document.getElementById('phoneInput').value.trim();
-  const phone = '+966' + raw;
-  try {
-    setupRecaptcha();
-    confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
-    startCountdown(60);
-    showToast('✓ تم إعادة الإرسال');
-  } catch(e) {
-    showToast('فشل إعادة الإرسال');
-  }
-};
-
-function startCountdown(sec) {
-  clearInterval(countdownTimer);
-  const link = document.getElementById('resendLink');
-  const txt = document.getElementById('countdownText');
-  link.classList.add('disabled');
-  let t = sec;
-  txt.textContent = `إعادة الإرسال بعد ${t}s `;
-  countdownTimer = setInterval(() => {
-    t--;
-    if (t <= 0) {
-      clearInterval(countdownTimer);
-      txt.textContent = '';
-      link.classList.remove('disabled');
-    } else {
-      txt.textContent = `إعادة الإرسال بعد ${t}s `;
+  setTimeout(() => {
+    const users = getUsers();
+    const exists = Object.values(users).find(u =>
+      u.email === email || u.username.toLowerCase() === username.toLowerCase()
+    );
+    if (exists) {
+      if (exists.email === email) err.textContent = 'هذا الإيميل مسجل مسبقاً';
+      else err.textContent = 'اسم المستخدم هذا محجوز، جرب آخر';
+      btn.disabled = false;
+      btn.innerHTML = 'إنشاء الحساب 🚀';
+      return;
     }
-  }, 1000);
+
+    const uid = 'u_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
+    users[uid] = { uid, name, username, email, passwordHash: hashSimple(pass), createdAt: new Date().toISOString() };
+    saveUsers(users);
+
+    window.currentUser = { uid, name, email, username };
+    localStorage.setItem('bestUser', JSON.stringify(window.currentUser));
+    document.getElementById('authOverlay').classList.remove('open');
+    renderUserBadge();
+    updateWelcomeBar();
+    showToast('🎉 أُنشئ حسابك بنجاح! مرحباً ' + name);
+    btn.disabled = false;
+    btn.innerHTML = 'إنشاء الحساب 🚀';
+  }, 800);
 }
 
-function showStep(name) {
-  document.querySelectorAll('.auth-step').forEach(s=>s.classList.remove('active'));
-  document.getElementById('step-'+name).classList.add('active');
-}
-
-function onLoginSuccess() {
-  localStorage.setItem('bestUser', JSON.stringify(window.currentUser));
+function continueAsGuest() {
+  window.currentUser = null;
+  localStorage.setItem('bestGuest', '1');
   document.getElementById('authOverlay').classList.remove('open');
   renderUserBadge();
   updateWelcomeBar();
-  showToast('✓ مرحباً ' + window.currentUser.name + '!');
+  showToast('👤 تصفح كضيف');
 }
 
-window.backToPhone = function() {
-  showStep('phone');
-  document.getElementById('sendOtpBtn').disabled = false;
-  document.getElementById('sendOtpBtn').innerHTML = 'إرسال رمز التحقق';
-};
+function doForgot() {
+  const email = document.getElementById('forgotEmail').value.trim().toLowerCase();
+  const err = document.getElementById('forgotError');
+  const suc = document.getElementById('forgotSuccess');
+  err.textContent = ''; suc.textContent = '';
 
-// OTP input auto-focus
-document.querySelectorAll('.otp-digit').forEach((inp, i, arr) => {
-  inp.addEventListener('input', () => {
-    inp.value = inp.value.replace(/\D/,'').slice(-1);
-    if (inp.value && i < arr.length - 1) arr[i+1].focus();
-  });
-  inp.addEventListener('keydown', (e) => {
-    if (e.key === 'Backspace' && !inp.value && i > 0) arr[i-1].focus();
-  });
-  inp.addEventListener('paste', (e) => {
-    const paste = (e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'');
-    if (paste.length >= 6) {
-      arr.forEach((a,j) => { a.value = paste[j]||''; });
-      arr[5].focus();
-    }
-  });
-});
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    err.textContent = 'أدخل إيميل صحيح'; return;
+  }
+
+  const btn = document.getElementById('forgotBtn');
+  btn.disabled = true;
+  btn.innerHTML = 'جاري الإرسال... <span class="auth-spinner"></span>';
+
+  setTimeout(() => {
+    const users = getUsers();
+    const user = Object.values(users).find(u => u.email === email);
+    // Always show success for security (don't reveal if email exists)
+    suc.textContent = '✅ إذا كان الإيميل مسجلاً، سيصلك رابط الاستعادة قريباً';
+    btn.disabled = false;
+    btn.innerHTML = 'إرسال رابط الاستعادة';
+  }, 900);
+}
+
+function logoutUser() {
+  window.currentUser = null;
+  localStorage.removeItem('bestUser');
+  localStorage.removeItem('bestGuest');
+  renderUserBadge();
+  updateWelcomeBar();
+  // Reset auth UI
+  document.getElementById('authTabs').style.display = '';
+  switchAuthMode('login');
+  document.getElementById('loginIdentifier').value = '';
+  document.getElementById('loginPassword').value = '';
+  document.getElementById('authOverlay').classList.add('open');
+}
 
 // Check saved session
+window.currentUser = null;
 const saved = localStorage.getItem('bestUser');
+const wasGuest = localStorage.getItem('bestGuest') === '1';
 if (saved) {
   try {
     window.currentUser = JSON.parse(saved);
     document.getElementById('authOverlay').classList.remove('open');
-    renderUserBadge();
-    updateWelcomeBar();
   } catch(e) {
     document.getElementById('authOverlay').classList.add('open');
   }
+} else if (wasGuest) {
+  // Already chose guest before, skip modal
+  document.getElementById('authOverlay').classList.remove('open');
 } else {
   document.getElementById('authOverlay').classList.add('open');
 }
 
-</script>
-
-<script>
+// ==============================
+// STORE LOGIC
+// ==============================
 const X_PATH = "M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.163 519.284ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.828Z";
 const mkX = (w) => `<svg width="${w}" height="${w}" viewBox="0 0 1200 1227" fill="none"><path d="${X_PATH}" fill="white"/></svg>`;
 
 let reviewsDB = {};
 const accounts = [
-  {id:1,year:2006,title:'حساب X | 2006',sub:'تاريخ الإنشاء: 2006',priceOld:80,priceNew:100.99},
-  {id:2,year:2007,title:'حساب X | 2007',sub:'تاريخ الإنشاء: 2007',priceOld:70,priceNew:111.99},
-  {id:3,year:2008,title:'حساب X | 2008',sub:'تاريخ الإنشاء: 2008',priceOld:60,priceNew:233.99},
-  {id:4,year:2009,title:'حساب X | 2009',sub:'تاريخ الإنشاء: 2009',priceOld:49,priceNew:222.99},
+  {id:1,year:2006,title:'حساب X | 2006',sub:'تاريخ الإنشاء: 2006',priceOld:80,priceNew:29.99},
+  {id:2,year:2007,title:'حساب X | 2007',sub:'تاريخ الإنشاء: 2007',priceOld:70,priceNew:24.99},
+  {id:3,year:2008,title:'حساب X | 2008',sub:'تاريخ الإنشاء: 2008',priceOld:60,priceNew:19.99},
+  {id:4,year:2009,title:'حساب X | 2009',sub:'تاريخ الإنشاء: 2009',priceOld:49,priceNew:12.99},
   {id:5,year:2010,title:'حساب X | 2010',sub:'تاريخ الإنشاء: 2010',priceOld:35,priceNew:15.99},
   {id:6,year:2011,title:'حساب X | 2011',sub:'تاريخ الإنشاء: 2011',priceOld:30,priceNew:17.00},
   {id:7,year:2012,title:'حساب X | 2012',sub:'تاريخ الإنشاء: 2012',priceOld:25,priceNew:14.00},
@@ -847,7 +825,6 @@ const accounts = [
 
 let activeFilter='all', searchQ='', cart=[], favs=new Set(), currentAcc=null, selectedStars=0;
 
-// USER BADGE
 function renderUserBadge() {
   const wrap = document.getElementById('userBadgeWrap');
   if (window.currentUser && window.currentUser.name) {
@@ -872,12 +849,6 @@ function updateWelcomeBar() {
   }
 }
 
-// Pre-fill reviewer name from user profile
-function getReviewerName() {
-  return (window.currentUser && window.currentUser.name) ? window.currentUser.name : '';
-}
-
-// DARK MODE
 function toggleDark(){
   document.body.classList.toggle('dark');
   const isDark = document.body.classList.contains('dark');
@@ -1013,7 +984,6 @@ function openModal(id){
   updateQtyTotal();
   renderReviews(id);
   initStarPicker();
-  // Pre-fill name if logged in
   const rn = document.getElementById('reviewName');
   if (window.currentUser && window.currentUser.name) rn.value = window.currentUser.name;
   document.getElementById('modalOverlay').classList.add('open');
@@ -1089,10 +1059,10 @@ function closePanel(){
 
 function buildWhatsAppMsg(items) {
   const userName = (window.currentUser && window.currentUser.name) ? window.currentUser.name : 'عميل';
-  const userPhone = (window.currentUser && window.currentUser.phone) ? window.currentUser.phone : '';
+  const userEmail = (window.currentUser && window.currentUser.email) ? window.currentUser.email : '';
   let msg = `🛒 *طلب جديد من متجر BEST*\n\n`;
   msg += `👤 الاسم: ${userName}\n`;
-  if (userPhone) msg += `📱 الجوال: ${userPhone}\n`;
+  if (userEmail) msg += `📧 الإيميل: ${userEmail}\n`;
   msg += `\n📦 *المنتجات:*\n`;
   items.forEach(i => {
     msg += `• ${i.title} × ${i.qty} = ${(i.priceNew*i.qty).toFixed(2)} ﷼\n`;
@@ -1149,7 +1119,6 @@ function addAllFavs(){
   updateBadges(); showToast('✓ أُضيف الكل للسلة'); closePanel();
 }
 
-// INFO MODALS
 const infoContent = {
   about: {
     title: '🏪 من نحن — متجر BEST',
